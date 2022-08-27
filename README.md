@@ -2,7 +2,7 @@
 
 ## What
 
-[SadServers](https://sadservers.com/) is a SaaS where users can test their Linux troubleshooting skills on real Linux servers.  
+[SadServers](https://sadservers.com/) is a SaaS where users can test their Linux troubleshooting skills on real Linux servers in a "Capture the Flag" fashion.  
 
 There's a collection of scenarios, a description of what's wrong and a test to check if the issue has been solved. The servers are spun up on the spot, users get an SSH shell via a browser window to an ephemeral server (destroyed after the alloted time for solving the challenge) and then they can try and solve the problem.  
 
@@ -19,6 +19,10 @@ To scratch a personal itch and because there's nothing like this that I'm aware 
 It's also my not-so-secret hope that a sophisticated enough version of SadServers could be used by tech companies (or for companies that carry on job interviews on their behalf) to automate or facilitate the Linux troubleshooting interview section.  
 
 An annoyance I found during my interviews is that sometimes instead of helping, the interviewer unintentionally misleads you, or you feel like you are in a tv game where you have to maximize for some arbitrary points and come up with an game strategy that doesn't reflect real incident situations (do I try to keep solving this problem or do I move to the next one, which one is better?).
+
+## How does it look?
+
+![ux](sadservers_ux_medium.png)
 
 ## Code
 
@@ -44,5 +48,16 @@ Without detail, there's quite a bit of auxiliary services needed to run a public
 ## Issues
 
 - Opening a new scenario while one is ongoing will invalidate the session of the first one. Clues are based on sessions so the clues displayed will be that of the latest session, which will be incorrect for previous scenarios.  
+
+## Roadmap
+
+- Registering users.
+- Timing solutions (this will allow to show a leaderboard).
+- Multi-VM scenarios (troubleshooting Kubernetes for example).
+
+
+## Contact
+
+Any feedback is appreaciated, please email info@sadservers.com
 
 
