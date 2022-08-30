@@ -54,10 +54,29 @@ Without detail, there's quite a bit of auxiliary services needed to run a public
 - Registering users.
 - Timing solutions (this will allow to show a leaderboard).
 - Multi-VM scenarios (troubleshooting Kubernetes for example).
+- HTTPS for the agent. (a smart person could reverse-engineer and replace it ahem)
+- Proxy server with SSL for ssh-to-web service.
+- Save & replay user command history.
+- OS package repository cache/proxy server.
+- Architecture diagram.
 
 
 ## Contact
 
-Any feedback is appreaciated, please email info@sadservers.com
+Any feedback is appreciated, please email info@sadservers.com
+
+## Collaboration
+
+If you want to create a scenario, these are broadly the requirements:  
+
+- A clear (not ambiguous) problem statement, ideally one that can be shown with a command or combination of commands.  
+- Even more importantly, a clear pass/fail test for the user that they can run in the form of a command or commands and therefore it can be checked with a Bash script, i. e., if we run a check.sh script, it will always return a binary result (strings "OK" and "NO" for example). 
+- A description of one solution to the problem, favoring simple and "production" ones.  
+- An automated way to create the problem. This is, a script and other files that will set up the problem fully on a non-licenced Linux distribution available in AWS (for example, latest Debian or Ubuntu). For instance, if the scenario issue is about a broken web server configuration, the script would install the web server and replace the original config file with the problematic one.  A Hashicorp Packer template and auxiliary files would be even better :-) 
+- Optionally, a set of clues or tips that will increasingly get the user closer to the solution.  
+- Other:
+    - I'm using ports :8080 and :6767 for the ssh-to-web and agent, so don't use those ports.
+    - Currently only supporting one VM scenarios and not multiple VM scenarios.
+    - Ideally VMs should be fully self-contained and not need the Internet for anything (ie, the user wouldn't need to initiate connections from the scenario VM to the Internet). The exception would be an OS package repository. 
 
 
