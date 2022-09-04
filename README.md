@@ -24,9 +24,6 @@ An annoyance I found during my interviews is that sometimes instead of helping, 
 
 ![ux](sadservers_ux_medium.png)
 
-## Code
-
-This project may become Open Source at some point but for now the code is not publicly available.
 
 ## Architecture
 
@@ -42,10 +39,14 @@ A [PostgreSQL](https://www.postgresql.org/) database is the permanent storage ba
 
 Instances are requested on AWS using [Boto3](https://github.com/boto/boto3), based on scenario images. A Celery beat scheduler checks for expired instances and kills them.  
 
-On the VM instances, [Gotty](https://github.com/yudai/gotty) provides the terminal as HTTP(S). An agent built with Golang and [Gin](https://github.com/gin-gonic/gin) provides a rest API to the main server, so solutions can be checked and commands can be sent to the scenario instance or data extracted from it (WIP).
+On the VM instances, [Gotty](https://github.com/yudai/gotty) provides the terminal as HTTP(S). An agent built with Golang and [Gin](https://github.com/gin-gonic/gin) provides a rest API to the main server, so solutions can be checked and commands can be sent to the scenario instance or data extracted from it.
 
 Without detail, there's quite a bit of auxiliary services needed to run a public service in a decent "production-ready" state. This includes notification services (AWS SES for email for example), logging service, external uptime monitoring service, scheduled backups, error logging (like [Sentry](https://sentry.io/)), infrastructure as code (Hashicorop [Terraform](https://www.terraform.io/) and [Packer](https://www.packer.io/)).
 
+
+## Code
+
+This project may become Open Source at some point but for now the code is not publicly available.
 
 ## Issues
 
@@ -53,15 +54,13 @@ Without detail, there's quite a bit of auxiliary services needed to run a public
 
 ## Roadmap
 
+- Proxy server with SSL for ssh-to-web service. (WIP)
 - Registering users.
 - Timing solutions (this will allow to show a leaderboard).
 - Multi-VM scenarios (troubleshooting Kubernetes for example).
 - HTTPS for the agent. (a smart person could reverse-engineer and replace it ahem)
-- Proxy server with SSL for ssh-to-web service.
 - Save & replay user command history.
 - OS package repository cache/proxy server.
-- Architecture diagram.
-
 
 ## Contact
 
