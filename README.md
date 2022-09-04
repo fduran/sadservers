@@ -28,7 +28,9 @@ An annoyance I found during my interviews is that sometimes instead of helping, 
 
 This project may become Open Source at some point but for now the code is not publicly available.
 
-## Tech Stack and Description
+## Architecture
+
+![architecture](sadservers_architecture.jpg)
 
 The website is powered by [Django](https://www.djangoproject.com/) and Python3, with [Bootstrap](https://getbootstrap.com/) and plain Javascript at the front.  
 
