@@ -27,26 +27,52 @@ An annoyance I found during my interviews is that sometimes instead of helping, 
 
 ## Architecture
 
+See diagram:
+
 ![architecture](sadservers_architecture.jpg)
+
+Users interact via HTTPS only with a web server and a proxy server connecting to the scenario VMs. The rest of the communications are internal between VPCs or AWS services. Each scenario VM reside in a VPC with no Internet-facing incoming access and limited egress access.
+
+### Web server
 
 The website is powered by [Django](https://www.djangoproject.com/) and Python3, with [Bootstrap](https://getbootstrap.com/) and plain Javascript at the front.  
 
 In front of Django there's an [Nginx](https://www.nginx.com/) server and [Gunicorn](https://gunicorn.org/) WSGI server. The SSL certificate is generously provided by [Let's Encrypt](https://letsencrypt.org/) and its certbot, the best thing to happen to the Internet since Mosaic.
 
-New server requests are queued and processed in the background. On the front-end I'm using [Celery Progress Bar for Django](https://github.com/czue/celery-progress). The tasks are managed asynchronously by [Celery](https://docs.celeryq.dev/en/stable/) with a [RabbitMQ](https://www.rabbitmq.com/) backend (and yes, maybe there should be a simpler but still robust stack instead of this).  
+### Task Queue
+
+New server requests are queued and processed in the background. On the front-end I'm using [Celery Progress Bar for Django](https://github.com/czue/celery-progress). The tasks are managed asynchronously by [Celery](https://docs.celeryq.dev/en/stable/) with a [RabbitMQ](https://www.rabbitmq.com/) back-end and with task results saved to the main database (and yes, maybe there should be a simpler but still robust stack instead of this).  
+
+### Permanent Storage
 
 A [PostgreSQL](https://www.postgresql.org/) database is the permanent storage backend, the first choice for RDBMS. [SQLite](https://www.sqlite.org/index.html) is a valid alternative for sites without a high rate of (concurrent) writes.  
 
 Instances are requested on AWS using [Boto3](https://github.com/boto/boto3), based on scenario images. A Celery beat scheduler checks for expired instances and kills them.  
 
-On the VM instances, [Gotty](https://github.com/yudai/gotty) provides the terminal as HTTP(S). An agent built with Golang and [Gin](https://github.com/gin-gonic/gin) provides a rest API to the main server, so solutions can be checked and commands can be sent to the scenario instance or data extracted from it.
+### Proxy Server
 
-Without detail, there's quite a bit of auxiliary services needed to run a public service in a decent "production-ready" state. This includes notification services (AWS SES for email for example), logging service, external uptime monitoring service, scheduled backups, error logging (like [Sentry](https://sentry.io/)), infrastructure as code (Hashicorop [Terraform](https://www.terraform.io/) and [Packer](https://www.packer.io/)).
+In the initial proof of concept, I had the users connect to the VMs public IP directly. For security reasons like terminating SSL, being able to use rate limiting, logging access and specially having the VMs with private IPs only, it's a good idea to route access to the scenario instances through a reverse web proxy server.  
 
+Since the scenario instances are created on demand (at least some of them), I needed a way to dynamicaly inject in the web server configuration the route mappings, ie, using code against an API to configure the web server and reloading it. The configuration for proxying a VM would be like proxy.sadservers.com:port/somestring -> (proxy passes to upstream server) -> VM ip address:port .  (Using a path string is an option, other options could be passing a ...?parameter in the URL or in the HTTP headers). 
+
+This was an interesting learning experience since unlike the rest of the stack I've never had this situation before. After considering some alternatives, I almost made it work with [Traefik](https://doc.traefik.io/traefik/) but I hit a wall, didn't seem to be a good solution for this case. and I discarded it.  A friend of mine suggested to use [Hashicorp Consul](https://www.consul.io/), where the Django server connects to and writes to its key/value store, and [Consul-template](https://github.com/hashicorp/consul-template), which monitors Consul and writes the key/values (string and IP) into Nginx configuration (which does the actual SSL and proxying) and reloads it. After figuring out production settings (certificates, tokens) it turned out to work very well.
+
+### Scenario Instances
+
+On the VM instances, [Gotty](https://github.com/yudai/gotty) provides a terminal with a shell as HTTP(S). An agent built with Golang and [Gin](https://github.com/gin-gonic/gin) provides a rest API to the main server, so solutions can be checked and commands can be sent to the scenario instance or data extracted from it.
+
+### Other Infrastructure & Services
+
+Without a lot of detail, there's quite a bit of auxiliary services needed to run a public service in a decent "production-ready" state. This includes notification services (AWS SES for email for example), logging service, external uptime monitoring service, scheduled backups, error logging (like [Sentry](https://sentry.io/)), infrastructure as code (Hashicorop [Terraform](https://www.terraform.io/) and [Packer](https://www.packer.io/)).
+
+
+## User Experience
+
+Not a UX expert as anyone can see but just trying to make it as simple and less confusing as possible.
 
 ## Code
 
-This project may become Open Source at some point but for now the code is not publicly available.
+This project may become Open Source at some point but for now the code is not publicly available. One reason is that showing the solution to the scenarios defeats the purpose and another reason is to expose details of how things are set up for security reasons. I'll be happy to chat about technical aspects of the project if someone is curious.
 
 ## Issues
 
@@ -54,7 +80,6 @@ This project may become Open Source at some point but for now the code is not pu
 
 ## Roadmap
 
-- Proxy server with SSL for ssh-to-web service. (WIP)
 - Registering users.
 - Timing solutions (this will allow to show a leaderboard).
 - Multi-VM scenarios (troubleshooting Kubernetes for example).
@@ -76,8 +101,8 @@ If you want to create a scenario, these are broadly the requirements:
 - An automated way to create the problem. This is, a script and other files that will set up the problem fully on a non-licenced Linux distribution available in AWS (for example, latest Debian or Ubuntu). For instance, if the scenario issue is about a broken web server configuration, the script would install the web server and replace the original config file with the problematic one.  A Hashicorp Packer template and auxiliary files would be even better :-) 
 - Optionally, a set of clues or tips that will increasingly get the user closer to the solution.  
 - Other:
-    - I'm using ports :8080 and :6767 for the ssh-to-web and agent, so don't use those ports.
+    - I'm using ports :8080 and :6767 for the shell-to-web and agent, so don't use those ports.
     - Currently only supporting one VM scenarios and not multiple VM scenarios.
-    - Ideally VMs should be fully self-contained and not need the Internet for anything (ie, the user wouldn't need to initiate connections from the scenario VM to the Internet). The exception would be an OS package repository. 
+    - VMs should be fully self-contained and not need the Internet for anything, ie, the user wouldn't need to initiate connections from the scenario VM to the Internet save for ICMP (ping) and DNS traffic. A possible exception would be access to an OS package repository proxy. 
 
 
