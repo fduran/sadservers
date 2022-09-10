@@ -43,12 +43,12 @@ In front of Django there's an [Nginx](https://www.nginx.com/) server and [Gunico
 
 New server requests are queued and processed in the background. On the front-end I'm using [Celery Progress Bar for Django](https://github.com/czue/celery-progress). The tasks are managed asynchronously by [Celery](https://docs.celeryq.dev/en/stable/) with a [RabbitMQ](https://www.rabbitmq.com/) back-end and with task results saved to the main database (and yes, maybe there should be a simpler but still robust stack instead of this).  
 
+Instances are requested on AWS using [Boto3](https://github.com/boto/boto3), based on scenario images. A Celery beat scheduler checks for expired instances and kills them. 
+
 ### Permanent Storage
 
 A [PostgreSQL](https://www.postgresql.org/) database is the permanent storage backend, the first choice for RDBMS. [SQLite](https://www.sqlite.org/index.html) is a valid alternative for sites without a high rate of (concurrent) writes.  
-
-Instances are requested on AWS using [Boto3](https://github.com/boto/boto3), based on scenario images. A Celery beat scheduler checks for expired instances and kills them.  
-
+ 
 ### Proxy Server
 
 In the initial proof of concept, I had the users connect to the VMs public IP directly. For security reasons like terminating SSL, being able to use rate limiting, logging access and specially having the VMs with private IPs only, it's a good idea to route access to the scenario instances through a reverse web proxy server.  
@@ -66,9 +66,33 @@ On the VM instances, [Gotty](https://github.com/yudai/gotty) provides a terminal
 Without a lot of detail, there's quite a bit of auxiliary services needed to run a public service in a decent "production-ready" state. This includes notification services (AWS SES for email for example), logging service, external uptime monitoring service, scheduled backups, error logging (like [Sentry](https://sentry.io/)), infrastructure as code (Hashicorop [Terraform](https://www.terraform.io/) and [Packer](https://www.packer.io/)).
 
 
-## User Experience
+## Site Priorities
 
-Not a UX expert as anyone can see but just trying to make it as simple and less confusing as possible.
+There are two main objectives: 1) to provide a good user experience with value and 2) security.
+
+### User Experience
+
+Not a UX expert as anyone can see but just trying to make it as simple and less confusing as possible. Like Seth Godin says in _The Big Red Fez_, "show me the monkey" (make evident where to click). The "happy paths" are so far one or two clicks away.
+
+### Security
+
+Security starts with _thread modeling_, which is a fancy way of saying "think what can go terribly wrong and what's most likely to go wrong". (Sidebar: Infosec is full of these big fancy expressions like "attack vector", "attack surface" or my favourite one "non-zero"; except if ending the sentence you can just omit it, try it with "there's a non-zero chance of blah").  
+
+For this project I see two types issues that adversarial ("bad hacker") agents could possibly inflict, focusing first on financial incentives and then on assholery ones:  
+- Monetary-based: there are free computing resources, so they could try and use for things like mining crypto or as a platform to launch malware or spam attacks (at an ISP I worked for, frequently a VM maxing out CPU was a compromised one sending spam or malware).
+- Monetary-based: AWS account credentials need to be managed for the queuing service that calls the AWS API. If these credentials are compromised, then I could be stuck with a big AWS bill.
+- Nastiness-based: general attacks like DoS on public endpoints from the outside or internal or "sibling" attacks from scenario VMs to other VMs. 
+
+**Mitigation**
+
+An incomplete list of things to do in general or that I've done in this case:
+- (Principle of least privilege) create a cloud account with permissions just to perform what you need. In my case, to be able to only create ec2 nodes, of a specific type(s) in specific subnets. Given the type of instance (nano, also using "spot" ones) and size of subnet(s) and therefore VMs, there's a known cap on the maximum expense that this account could incur during a period of time.
+- Monitor all the things and alert. Budgets and threshold alerts in your cloud provider are a way to detect anomaly costs.
+- Access and application logs are also helpful in detecting malicious behaviour. 
+- In my case, instances spun normally from the website are garbaged-collected after 15-45 minutes and are not powerful, so it's a disincentive for running malicious or opportunistic programs on them.
+- Scenario VMs are isolated within their VPC. The only ingress network traffic allowed is from the web server to the agent and from the proxy server to the shell-to-web tool. The only egress traffic allowed is ICMP and indirectly (via a local name server), DNS. This eliminates in principle the risk of these instances being used to launch attacks on other servers in the Internet. The "sibling" attack possibility to legit neighbour VMs is still there but at least there's little financial incentive to it.
+- From the outside Internet there's only network access to an HTTPS port on both web server and proxy server, also there are automatic rate-limiting measures at these public entry points.
+
 
 ## Code
 
@@ -101,7 +125,7 @@ If you want to create a scenario, these are broadly the requirements:
 - An automated way to create the problem. This is, a script and other files that will set up the problem fully on a non-licenced Linux distribution available in AWS (for example, latest Debian or Ubuntu). For instance, if the scenario issue is about a broken web server configuration, the script would install the web server and replace the original config file with the problematic one.  A Hashicorp Packer template and auxiliary files would be even better :-) 
 - Optionally, a set of clues or tips that will increasingly get the user closer to the solution.  
 - Other:
-    - I'm using ports :8080 and :6767 for the shell-to-web and agent, so don't use those ports.
+    - I'm using ports :8080 and :6767 for the shell-to-web and agent, so don't try and run services on those ports.
     - Currently only supporting one VM scenarios and not multiple VM scenarios.
     - VMs should be fully self-contained and not need the Internet for anything, ie, the user wouldn't need to initiate connections from the scenario VM to the Internet save for ICMP (ping) and DNS traffic. A possible exception would be access to an OS package repository proxy. 
 
