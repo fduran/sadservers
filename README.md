@@ -76,7 +76,7 @@ Not a UX expert as anyone can see but just trying to make it as simple and less 
 
 ### Security
 
-Security starts with _thread modeling_, which is a fancy way of saying "think what can go terribly wrong and what's most likely to go wrong". (Sidebar: Infosec is full of these big fancy expressions like "attack vector", "attack surface" or my favourite one "non-zero"; except if ending the sentence you can just omit it, try it with "there's a non-zero chance of blah").  
+Security starts with _thread modeling_, which is a fancy way of saying "think what can go terribly wrong and what's most likely to go wrong". (Sidebar: Infosec is full of these big fancy expressions like "blast radius", "attack vector", "attack surface" or my favourite one "non-zero"; except if ending the sentence you can just omit it, try it with "there's a non-zero chance of blah").  
 
 For this project I see two types issues that adversarial ("bad hacker") agents could possibly inflict, focusing first on financial incentives and then on assholery ones:  
 - Monetary-based: there are free computing resources, so they could try and use for things like mining crypto or as a platform to launch malware or spam attacks (at an ISP I worked for, frequently a VM maxing out CPU was a compromised one sending spam or malware).
@@ -90,7 +90,7 @@ An incomplete list of things to do in general or that I've done in this case:
 - Monitor all the things and alert. Budgets and threshold alerts in your cloud provider are a way to detect anomaly costs.
 - Access and application logs are also helpful in detecting malicious behaviour. 
 - In my case, instances spun normally from the website are garbaged-collected after 15-45 minutes and are not powerful, so it's a disincentive for running malicious or opportunistic programs on them.
-- Scenario VMs are isolated within their VPC. The only ingress network traffic allowed is from the web server to the agent and from the proxy server to the shell-to-web tool. The only egress traffic allowed is ICMP and indirectly (via a local name server), DNS. This eliminates in principle the risk of these instances being used to launch attacks on other servers in the Internet. The "sibling" attack possibility to legit neighbour VMs is still there but at least there's little financial incentive to it.
+- Scenario VMs are isolated within their VPC. The only ingress network traffic allowed is from the web server to the agent and from the proxy server to the shell-to-web tool. The only egress traffic allowed is ICMP and indirectly (via a local name server), DNS. This eliminates in principle the risk of these instances being used to launch attacks on other servers in the Internet.
 - From the outside Internet there's only network access to an HTTPS port on both web server and proxy server, also there are automatic rate-limiting measures at these public entry points.
 
 
@@ -121,6 +121,8 @@ If you want to create a scenario, these are broadly the requirements:
 
 - A clear (not ambiguous) problem statement, ideally one that can be shown with a command or combination of commands.  
 - Even more importantly, a clear pass/fail test for the user that they can run in the form of a command or commands and therefore it can be checked with a Bash script, i. e., if we run a check.sh script, it will always return a binary result (strings "OK" and "NO" for example). 
+- Furthermore, the check.sh script is accessible by the user (they can actually run it to verify their work), so the solution should not be given away in this script. For example, if the problem is about a process that needs to be killed, if we check in the script by testing for example `ps au|grep rogue`, then we are revealing the name of the process.
+- For scenarios where a good check script is not possible, there's an option in the system to just not use the "Check solution" option for a scenario.
 - A description of one solution to the problem, favoring simple and "production" ones.  
 - An automated way to create the problem. This is, a script and other files that will set up the problem fully on a non-licenced Linux distribution available in AWS (for example, latest Debian or Ubuntu). For instance, if the scenario issue is about a broken web server configuration, the script would install the web server and replace the original config file with the problematic one.  A Hashicorp Packer template and auxiliary files would be even better :-) 
 - Optionally, a set of clues or tips that will increasingly get the user closer to the solution.  
