@@ -31,7 +31,7 @@ See diagram:
 
 ![architecture](sadservers_architecture.jpg)
 
-Users interact via HTTPS only with a web server and a proxy server connecting to the scenario VMs. The rest of the communications are internal between VPCs or AWS services. Each scenario VM reside in a VPC with no Internet-facing incoming access and limited egress access.
+Users interact via HTTPS only with a web server and a proxy server connecting to the scenario VMs. The rest of the communications are internal between VPCs or AWS services. Each scenario VM resides in a VPC with no Internet-facing incoming access and limited egress access.
 
 ### Web server
 
