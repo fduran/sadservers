@@ -24,3 +24,7 @@ The Hashicorp Packer template is specific for AWS and you'll need to provide the
 -  the `source_ami` to use as a base (find latest Debian 11 for example) and - the AWS `region` for this image and the temporal VM and result image.
 
 The temporary VM instance that Packer creates needs to be somewhere specific, so we need to pass a `vpc_id` and a `subnet_id` (or you can use the `default` VPC).
+
+## Scenarios
+
+[Scenario 1. "Saint John": what is writing to this log file?](scenario-1-saintjohn)
