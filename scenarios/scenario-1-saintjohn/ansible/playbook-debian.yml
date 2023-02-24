@@ -1,0 +1,47 @@
+---
+# ansible-playbook playbook-debian.yml -u admin --private-key=/path/to/private/key -i "$ip,"
+- name: copy files to remote server
+  hosts: all
+  tasks:
+  # OS
+  - name: update packages
+    become: true
+    apt:
+      update_cache: yes
+  - name: install lsof  # just in case, is there by default
+    become: true
+    apt:
+      name: lsof
+      state: present
+
+  # scenario-specific
+  - name: copy badlog.py
+    copy:
+      src: ../files/badlog.py
+      dest: /home/admin/badlog.py
+  - name: set badlog.py
+    file:
+      path: /home/admin/badlog.py
+      mode: "+x"
+  - name: create log file
+    become: true
+    file:
+      path: /var/log/bad.log
+      state: touch
+      owner: admin
+      group: admin
+  - name: cronjob
+    cron:
+      name: "reboot"
+      special_time: reboot
+      job: "/home/admin/badlog.py &"
+  
+  # check.sh
+  - name: copy check.sh
+    copy:
+      src: ../files/check.sh
+      dest: /home/admin/agent/check.sh
+  - name: set check.sh
+    file:
+      path: /home/admin/agent/check.sh
+      mode: "+x"

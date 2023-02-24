@@ -105,11 +105,10 @@ This project may become Open Source at some point but for now the code is not pu
 ## Roadmap
 
 - Registering users.
-- Timing solutions (this will allow me to show a leaderboard).
 - Multi-VM scenarios (troubleshooting Kubernetes for example).
-- HTTPS for the agent. (a smart person could reverse-engineer and replace it ahem)
 - Save & replay user command history.
 - OS package repository cache/proxy server.
+- User rank board.
 
 ## Contact
 
@@ -124,7 +123,7 @@ If you want to create a scenario, these are broadly the requirements:
 - Furthermore, the check.sh script is accessible by the user (they can actually run it to verify their work), so the solution should not be given away in this script. For example, if the problem is about a process that needs to be killed, if we check in the script by testing for example `ps au|grep rogue`, then we are revealing the name of the process.
 - For scenarios where a good check script is not possible, there's an option in the system to just not use the "Check solution" option for a scenario.
 - A description of one solution to the problem, favoring simple and "production" ones.  
-- An automated way to create the problem. This is, a script and other files that will set up the problem fully on a non-licenced Linux distribution available in AWS (for example, latest Debian or Ubuntu). For instance, if the scenario issue is about a broken web server configuration, the script would install the web server and replace the original config file with the problematic one.  A Hashicorp Packer template and auxiliary files would be even better :-) 
+- An automated way to create the problem. This is, a script and other files that will set up the problem fully on a non-licenced Linux distribution available in AWS (for example, latest Debian or Ubuntu). For instance, if the scenario issue is about a broken web server configuration, the script would install the web server and replace the original config file with the problematic one. An Ansible playbook or Hashicorp Packer template and auxiliary files would be ideal. See examples in [scenarios](scenarios).
 - Optionally, a set of clues or tips that will increasingly get the user closer to the solution.  
 - Other:
     - I'm using ports :8080 and :6767 for the shell-to-web and agent, so don't try and run services on those ports.
