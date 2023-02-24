@@ -12,8 +12,15 @@ The resulting servers or images are different from the ones in SadServers in:
 
 Basically, execute the Ansible playbook in the `ansible` directory of the scenario.  
 
-For example: `ansible-playbook playbook-debian.yml -u admin -i "$ip,"` where `-u admin` means to log in as admin user, this would be for example `ubuntu` in Ubuntu distros. There is no inventory file provided, you can add one or pass the hostname or ip address of the target server with the `-i` option (to confuse things, -i can also be used for the private key path, which can also be passed as `--private-key=/path/to/private/key`).
+For example: `ansible-playbook playbook-debian.yml -u admin -i "$ip,"`.
+
+Here `-u admin` means to log in as admin user, this would be for example `-u ubuntu` in Ubuntu distros.  
+
+There is no inventory file provided, you can add one or pass the hostname or ip address of the target server with the `-i` option (to confuse things, -i can also be used for the private key path, which can also be passed as `--private-key=/path/to/private/key`).
 
 ## Packer
 
-The Hashicorp Packer template is specific for AWS and you'll need to provide the parameters in the `variables.pkr.hcl` file; namely the `source_ami` to use as a base (find latest Debian 11 for example) and the AWS `region` for this image and the temporal VM and result image. The temporary VM instance that Packer creates needs to be somewhere specific, so we need to pass a `vpc_id` and a `subnet_id` (or you can use the `default` VPC).
+The Hashicorp Packer template is specific for AWS and you'll need to provide the parameters in the `variables.pkr.hcl` file; namely:
+-  the `source_ami` to use as a base (find latest Debian 11 for example) and - the AWS `region` for this image and the temporal VM and result image.
+
+The temporary VM instance that Packer creates needs to be somewhere specific, so we need to pass a `vpc_id` and a `subnet_id` (or you can use the `default` VPC).
