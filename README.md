@@ -130,3 +130,6 @@ If you want to create a scenario, these are broadly the requirements:
     - Currently only supporting one VM scenarios and not multiple VM scenarios.
     - VMs should be fully self-contained and not need the Internet for anything, ie, the user wouldn't need to initiate connections from the scenario VM to the Internet save for ICMP (ping) and DNS traffic. A possible exception would be access to an OS package repository proxy. 
 
+## Scenarios
+
+[Scenarios](scenarios)
