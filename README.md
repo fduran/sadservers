@@ -104,11 +104,9 @@ This project may become Open Source at some point but for now the code is not pu
 
 ## Roadmap
 
-- Registering users.
 - Multi-VM scenarios (troubleshooting Kubernetes for example).
 - Save & replay user command history.
 - OS package repository cache/proxy server.
-- User rank board.
 
 ## Contact
 
