@@ -104,9 +104,16 @@ This project may become Open Source at some point but for now the code is not pu
 
 ## Roadmap
 
-- Multi-VM scenarios (troubleshooting Kubernetes for example).
-- Save & replay user command history.
+- ~~Save & replay user command history.~~ DONE (with some limitations like replay file size, see [Replay Server](https://replay.sadservers.com/) )
+- ~~Instances with public IPs where the user's public SSH key is added so they can use any SSH client.~~ DONE for selected users. 
+- ~~Code to run competitions~~ DONE for the <A href="https://linuxworldcup.com/">Linux World Cup</a>
+- Multi-VM scenarios.
 - OS package repository cache/proxy server.
+- A system for users to upload their scenarios.
+- Look into WebAssembly (WASM) so users can run (some) scenarios in the browser.
+- Look into alternative hosting methods:
+    - Kubernetes for Dockerized scenarios.
+    - <a href="https://firecracker-microvm.github.io/">Firecracker</a>.
 
 ## Contact
 
@@ -127,6 +134,7 @@ If you want to create a scenario, these are broadly the requirements:
     - I'm using ports :8080 and :6767 for the shell-to-web and agent, so don't try and run services on those ports.
     - Currently only supporting one VM scenarios and not multiple VM scenarios.
     - VMs should be fully self-contained and not need the Internet for anything, ie, the user wouldn't need to initiate connections from the scenario VM to the Internet save for ICMP (ping) and DNS traffic. A possible exception would be access to an OS package repository proxy. 
+    - The scenario VM needs to survive a reboot, as in the problem still works.
 
 ## Scenarios
 
