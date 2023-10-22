@@ -71,7 +71,7 @@ Asciinema supports AWS S3 as a backend storage, but I decided that a better opti
 
 Diagram:
 
-![replay_system](replay_system.png)
+![replay_system](replay_system.jpg)
 
 The workflow is as follows:
 
