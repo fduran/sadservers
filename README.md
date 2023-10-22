@@ -1,5 +1,34 @@
 # SadServers
 
+[![mail](https://img.shields.io/badge/info%40sadservers.com-blue)](mailto:info@sadservers.com)&nbsp;&nbsp;&nbsp;
+[![x](https://img.shields.io/twitter/follow/sadservers_com)](https://twitter.com/sadservers_com)&nbsp;&nbsp;&nbsp;
+[![mastodon](https://img.shields.io/mastodon/follow/109892696792748894)](https://mastodon.social/@sadservers)&nbsp;&nbsp;&nbsp;
+[![uptime](https://img.shields.io/uptimerobot/ratio/m792420367-f091e387ec222bcb6558559a)](https://stats.uptimerobot.com/ZRGoBu7Kp9)&nbsp;&nbsp;&nbsp;
+[!["Buy Me A Coffee"](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/sadservers)
+
+**Table of Contents:**  
+
+- [What](#what)
+- [Why](#why)
+- [How Does It Look](#how-does-it-look)
+- [Architecture](#architecture)
+    - [Web Server](#web-server)
+    - [Task Queue](#task-queue)
+    - [Permanent Storage](#permanent-storage)
+    - [Scenario Instances](#scenario-instances)
+    - [Replay System](#replay-system)
+    - [Other Infrastructure Services](#other-infrastructure--services)
+- [Site Priorities](#site-priorities)
+    - [User Experience](#user-experience)
+    - [Security](#security)
+- [Code](#code)
+- [Issues](#issues)
+- [Roadmap](#roadmap)
+- [Collaboration](#collaboration)
+- [Scenarios](#scenarios)
+- [Contact](#contact)
+
+
 ## What
 
 [SadServers](https://sadservers.com/) is a SaaS where users can test their Linux troubleshooting skills on real Linux servers in a "Capture the Flag" fashion.  
@@ -142,9 +171,6 @@ This project may become Open Source at some point but for now the code is not pu
     - Kubernetes for Dockerized scenarios.
     - <a href="https://firecracker-microvm.github.io/">Firecracker</a>.
 
-## Contact
-
-Any feedback is appreciated, please email info@sadservers.com
 
 ## Collaboration
 
@@ -166,3 +192,7 @@ If you want to create a scenario, these are broadly the requirements:
 ## Scenarios
 
 [Scenarios](scenarios)
+
+## Contact
+
+Any feedback is appreciated, please email info@sadservers.com
