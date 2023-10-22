@@ -61,6 +61,32 @@ This was an interesting learning experience since unlike the rest of the stack I
 
 On the VM instances, [Gotty](https://github.com/yudai/gotty) provides a terminal with a shell as HTTP(S). An agent built with Golang and [Gin](https://github.com/gin-gonic/gin) provides a rest API to the main server, so solutions can be checked and commands can be sent to the scenario instance or data extracted from it.
 
+### Replay System
+
+For the [Linux World Cup](https://github.com/fduran/linuxworldcup) I wanted to have a way to record the user command line sessions and be able to show them publicly. I mean, what good is a World Cup or any competition if people cannot see what the participants are doing?  
+
+I looked at several options and ended up implementing [asciinema](https://asciinema.org/) which does the heavy lifting. You can see the results at [https://replay.sadservers.com](https://replay.sadservers.com).  
+
+Asciinema supports AWS S3 as a backend storage, but I decided that a better option for my case is to have S3 in front of the asciinema server, in part due to security and also because it gives me more control. The implementation of this "S3" is done with [Minio](https://min.io/) in a self-hosted server.
+
+Diagram:
+
+![replay_system](replay_system.png)
+
+The workflow is as follows:
+
+1. The user (cloud icon) goes to SadServers.com and creates an AWS instance VM.
+2. The VM offers a shell-like web interface using Gotty (traffic goes through a proxy not shown here). Gotty calls Bash as login, which calls `/etc/profile` and in there I call `asciinema record` to a file (with a conditional test so it doesn't create an infinite loop).
+3. A Minio client `mc` periodically ships the cast file (up to a size) to the Minio storage server (Minio has an `mc mirror` option to constantly sync file changes but it didn't work for me). If the user does a shutdown, using `systemd` I'm able to synchronize the last command changes and send them. There's also a maximum file size limit in the storage server.
+4. When the VM is destroyed, the web server sends a request to the storage server, where an agent I wrote:
+5. uploads the cast file to the asciinema server (replay server) and 
+6. returns the URL in the replay server to the web server so it's saved to the database and shown in the user's dashboard as a link to the replay server for the scenario they tried.
+7. The user (or anyone, it's public) can see their session replay.
+
+In the call to the agent (step 4), I can decide via a database flag for the scenario if I want to upload the screencast from the storage server to the public replay server. This allows me the control to decide if some scenarios have their sessions made public or not, while still retaining in the storage server all the casts.
+
+This feature was used in the Linux World Cup for example, where I wanted to show everyone how people solved (or tried to solve) the challenges but I didn't want the sessions to be public until the event was over.
+
 ### Other Infrastructure & Services
 
 Without a lot of detail, there's quite a bit of auxiliary services needed to run a public service in a decent "production-ready" state. This includes notification services (AWS SES for email for example), logging service, external uptime monitoring service, scheduled backups, error logging (like [Sentry](https://sentry.io/)), infrastructure as code (Hashicorp [Terraform](https://www.terraform.io/) and [Packer](https://www.packer.io/)).
@@ -107,6 +133,7 @@ This project may become Open Source at some point but for now the code is not pu
 - ~~Save & replay user command history.~~ DONE (with some limitations like replay file size, see [Replay Server](https://replay.sadservers.com/) )
 - ~~Instances with public IPs where the user's public SSH key is added so they can use any SSH client.~~ DONE for selected users. 
 - ~~Code to run competitions~~ DONE for the <A href="https://linuxworldcup.com/">Linux World Cup</a>
+- Guided scenarios with stop-and-resume VMs.
 - Multi-VM scenarios.
 - OS package repository cache/proxy server.
 - A system for users to upload their scenarios.
