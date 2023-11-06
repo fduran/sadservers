@@ -162,7 +162,7 @@ This project may become Open Source at some point but for now the code is not pu
 - ~~Save & replay user command history.~~ DONE (with some limitations like replay file size, see [Replay Server](https://replay.sadservers.com/) )
 - ~~Instances with public IPs where the user's public SSH key is added so they can use any SSH client.~~ DONE for selected users. 
 - ~~Code to run competitions~~ DONE for the <A href="https://linuxworldcup.com/">Linux World Cup</a>
-- Guided scenarios with stop-and-resume VMs.
+- ~~Guided scenarios with stop-and-resume VMs.~~ DONE
 - Multi-VM scenarios.
 - OS package repository cache/proxy server.
 - A system for users to upload their scenarios.
