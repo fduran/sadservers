@@ -1,4 +1,4 @@
-# Scenario 1. "Saint John": what is writing to this log file?
+# "Saint John": what is writing to this log file?
 
 ## Description
 
@@ -7,8 +7,29 @@ This program is no longer needed. Find it and terminate it.
 
 ## Test
 
-The log file hasn't changed in the last 6 seconds:
-<kbd>find /var/log/bad.log -mmin -0.1</kbd> (You don't need to know the details of this command).
+The log file size doesn't change (within a time interval bigger than the rate of change of the log file).<br><br>
+The "Check My Solution" button runs the script <i>/home/admin/agent/check.sh</i>, which you can see and execute.
+
+check.sh
+```
+#!/usr/bin/bash
+
+log_file="/var/log/bad.log"
+
+if [ -f "$log_file" ]; then
+    current_size=$(stat -c %s "$log_file")
+    sleep 0.5
+    new_size=$(stat -c %s "$log_file")
+
+    if [ "$current_size" -eq "$new_size" ]; then
+        echo -n "OK"
+    else
+        echo -n "NO"
+    fi
+else
+    echo -n "NO"
+fi
+```
 
 ## Clues
 
