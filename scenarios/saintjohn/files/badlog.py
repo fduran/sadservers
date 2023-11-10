@@ -10,4 +10,4 @@ with open('/var/log/bad.log', 'w') as f:
         r = random.randrange(2147483647)
         print(str(datetime.now()) + ' token: ' + str(r), file=f)
         f.flush()
-        time.sleep(1)
+        time.sleep(0.3)

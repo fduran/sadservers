@@ -1,10 +1,17 @@
 #!/usr/bin/bash
-res=$(find /var/log/bad.log -mmin -0.1)
-res=$(echo $res|tr -d '\r')
 
-if [[ "$res" = "/var/log/bad.log" ]]
-then
-  echo -n "NO"
+log_file="/var/log/bad.log"
+
+if [ -f "$log_file" ]; then
+    current_size=$(stat -c %s "$log_file")
+    sleep 0.5
+    new_size=$(stat -c %s "$log_file")
+
+    if [ "$current_size" -eq "$new_size" ]; then
+        echo -n "OK"
+    else
+        echo -n "NO"
+    fi
 else
-  echo -n "OK"
+    echo -n "NO"
 fi
