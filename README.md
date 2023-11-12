@@ -1,5 +1,7 @@
 # SadServers
 
+[SadServers](https://sadservers.com/) is a SaaS where users can test their Linux troubleshooting skills on real Linux servers in a "Capture the Flag" fashion.
+
 [![mail](https://img.shields.io/badge/info%40sadservers.com-blue)](mailto:info@sadservers.com)&nbsp;&nbsp;&nbsp;
 [![x](https://img.shields.io/twitter/follow/sadservers_com)](https://twitter.com/sadservers_com)&nbsp;&nbsp;&nbsp;
 [![mastodon](https://img.shields.io/mastodon/follow/109892696792748894)](https://mastodon.social/@sadservers)&nbsp;&nbsp;&nbsp;
@@ -31,7 +33,7 @@
 
 ## What
 
-[SadServers](https://sadservers.com/) is a SaaS where users can test their Linux troubleshooting skills on real Linux servers in a "Capture the Flag" fashion.  
+[SadServers](https://sadservers.com/) is a SaaS where users can test their Linux (Docker, Kubernetes...)troubleshooting skills on real Linux servers in a "Capture the Flag" fashion.  
 
 There's a collection of scenarios, a description of what's wrong and a test to check if the issue has been solved. The servers are spun up on the spot, users get an "SSH" shell via a browser window to an ephemeral server (destroyed after the allotted time for solving the challenge) and then they can try and solve the problem.  
 
@@ -155,7 +157,9 @@ This project may become Open Source at some point but for now the code is not pu
 
 ## Issues
 
-- Opening a new scenario while one is ongoing will invalidate the session of the first one. Clues are based on sessions so the clues displayed will be that of the latest session, which will be incorrect for previous scenarios.  
+- Opening a new scenario while one is ongoing will invalidate the session of the first one. Clues are based on sessions so the clues displayed will be that of the latest session, which will be incorrect for previous scenarios.     
+- Sometimes the "Check My Solution" button won't work properly. One cause of this is refreshing the scenario screen (navigation in this screen without using the buttons/links provided like refreshing or going back is problematic).  
+- There are scenario issues, the most common ones are: not very clear wording of the problem statement and the solution checker giving false negatives. Please give me feedback so I can improve them.
 
 ## Roadmap
 
@@ -163,9 +167,12 @@ This project may become Open Source at some point but for now the code is not pu
 - ~~Instances with public IPs where the user's public SSH key is added so they can use any SSH client.~~ DONE for selected users. 
 - ~~Code to run competitions~~ DONE for the <A href="https://linuxworldcup.com/">Linux World Cup</a>
 - ~~Guided scenarios with stop-and-resume VMs.~~ DONE
+- User comment system.
 - Multi-VM scenarios.
 - OS package repository cache/proxy server.
 - A system for users to upload their scenarios.
+- Translation of texts to multiple languages.
+- Guided learning system.
 - Look into WebAssembly (WASM) so users can run (some) scenarios in the browser.
 - Look into alternative hosting methods:
     - Kubernetes for Dockerized scenarios.
@@ -174,14 +181,20 @@ This project may become Open Source at some point but for now the code is not pu
 
 ## Collaboration
 
-If you want to create a scenario, these are broadly the requirements:  
+I'm not looking for web development (SadServers.com front-end and back-end) help at the moment. The biggest help I'll appreciate is:
+
+- Feedback on the scenarios and general website user experience.
+- Creation of scenarios.
+
+If you want to create a scenario, these are the requirements:  
 
 - A clear (not ambiguous) problem statement, ideally one that can be shown with a command or combination of commands.  
-- Even more importantly, a clear pass/fail test for the user that they can run in the form of a command or commands and therefore it can be checked with a Bash script, i. e., if we run a check.sh script, it will always return a binary result (strings "OK" and "NO" for example). 
-- Furthermore, the check.sh script is accessible by the user (they can actually run it to verify their work), so the solution should not be given away in this script. For example, if the problem is about a process that needs to be killed, if we check in the script by testing for example `ps au|grep rogue`, then we are revealing the name of the process.
+- (Optionally but very desirable): a clear pass/fail test for the user that they can run in the form of a command or commands and therefore it can be checked with a Bash script, i. e., if we run a check.sh script, it will always return a binary result (strings "OK" and "NO" for example). 
+    - This <i>check.sh</a> script has to be accessible by the user (they can actually run it to verify their work), so the solution should not be given away in this script. For example, if the problem is about a process that needs to be killed, if we check in the script by testing for example `ps au|grep rogue`, then we are revealing the name of the process.
 - For scenarios where a good check script is not possible, there's an option in the system to just not use the "Check solution" option for a scenario.
-- A description of one solution to the problem, favoring simple and "production" ones.  
-- An automated way to create the problem. This is, a script and other files that will set up the problem fully on a non-licenced Linux distribution available in AWS (for example, latest Debian or Ubuntu). For instance, if the scenario issue is about a broken web server configuration, the script would install the web server and replace the original config file with the problematic one. An Ansible playbook or Hashicorp Packer template and auxiliary files would be ideal. See examples in [scenarios](scenarios).
+- A description of one solution to the problem, favoring simple and "production" ones. Solutions in general should be self-contained to the Linux server in the scenario, i.e, it shouldn't require users to copy information out to their laptop/workstations and work on the solution there.  
+- An automated way to create the problem. This is, a script and other files that will set up the problem fully on a non-licenced Linux distribution available in AWS. An Ansible playbook and auxiliary files would be ideal. See examples in [scenarios](scenarios).
+- The scenario can run on an AWS instance, ideally a t3a.nano one (0.5 GiB). Unless the scenario is specific to a Linux distro, I favour recent official AWS Debian AMIs.
 - Optionally, a set of clues or tips that will increasingly get the user closer to the solution.  
 - Other:
     - I'm using ports :8080 and :6767 for the shell-to-web and agent, so don't try and run services on those ports.
