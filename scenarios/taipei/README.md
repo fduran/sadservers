@@ -6,7 +6,7 @@ There is a web server on port :80 protected with <a href="https://en.wikipedia.o
 
 ## Test
 
-Executing <kbd>curl localhost</kbd> returns a message with md5sum <i>fe474f8e1c29e9f412ed3b726369ab65</i>.
+Executing <kbd>curl localhost</kbd> returns a message with md5sum <i>fe474f8e1c29e9f412ed3b726369ab65</i>. (Note: the resulting md5sum includes the new line terminator: <kbd>echo $(curl localhost)</kbd>)
 
 
 <b>check.sh</b>
