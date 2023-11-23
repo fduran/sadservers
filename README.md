@@ -19,6 +19,7 @@
     - [Permanent Storage](#permanent-storage)
     - [Scenario Instances](#scenario-instances)
     - [Replay System](#replay-system)
+    - [Resumable VMs](#resumable-vms)
     - [Other Infrastructure Services](#other-infrastructure--services)
 - [Site Priorities](#site-priorities)
     - [User Experience](#user-experience)
@@ -117,6 +118,18 @@ The workflow is as follows:
 In the call to the agent (step 4), I can decide via a database flag for the scenario if I want to upload the screencast from the storage server to the public replay server. This allows me the control to decide if some scenarios have their sessions made public or not, while still retaining in the storage server all the casts.
 
 This feature was used in the Linux World Cup for example, where I wanted to show everyone how people solved (or tried to solve) the challenges but I didn't want the sessions to be public until the event was over.
+
+### Resumable VMs
+
+For users that are doing guided learning at their own pace (rather than solving a "challenge"), like for example the [Linux Upskill Challenge](https://linuxupskillchallenge.org/) ,  SadServers offers "resumable" VMs, ie, servers that the user can stop and restart without losing their changes.  
+
+Currently this feature is limited to one VM per (registered) user. Also, these VMs can be destroyed after a number of days of inactivity or after a total number of days.  
+
+From the user's point of view, the lifecycle of their resumable instance follows the same lifecycle as any (EBS-backed, not spot) instance in AWS (shown below), with the difference that the transitions states are not shown to the user. So the instance can be either Running or Stopped, and from either one of those two states it can be Terminated.  
+
+Once the resumable instance is terminated, the user can choose to create another one.
+
+![instance_lifecycle](instance_lifecycle.png)
 
 ### Other Infrastructure & Services
 
