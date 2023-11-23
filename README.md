@@ -180,7 +180,7 @@ This project may become Open Source at some point but for now the code is not pu
 - ~~Instances with public IPs where the user's public SSH key is added so they can use any SSH client.~~ DONE for selected users. 
 - ~~Code to run competitions~~ DONE for the <A href="https://linuxworldcup.com/">Linux World Cup</a>
 - ~~Guided scenarios with stop-and-resume VMs.~~ DONE
-- User comment system.
+- ~~User comment system.~~ DONE [piggy-backing on Github](https://github.com/fduran/sadservers/discussions)
 - Multi-VM scenarios.
 - OS package repository cache/proxy server.
 - A system for users to upload their scenarios.
