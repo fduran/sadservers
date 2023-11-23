@@ -186,6 +186,8 @@ This project may become Open Source at some point but for now the code is not pu
 - A system for users to upload their scenarios.
 - Translation of texts to multiple languages.
 - Guided learning system.
+- Blog or article system.
+- Login using Github or Gmail account.
 - Look into WebAssembly (WASM) so users can run (some) scenarios in the browser.
 - Look into alternative hosting methods:
     - Kubernetes for Dockerized scenarios.
