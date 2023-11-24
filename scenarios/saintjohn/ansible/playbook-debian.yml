@@ -37,6 +37,14 @@
       job: "/home/admin/badlog.py &"
   
   # check.sh
+  - name: Create /home/admin/agent directory
+    ansible.builtin.file:
+      path: /home/admin/agent
+      owner: admin
+      group: admin
+      mode: a+wx
+      state: directory
+
   - name: copy check.sh
     copy:
       src: ../files/check.sh
