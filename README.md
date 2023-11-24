@@ -184,6 +184,7 @@ This project may become Open Source at some point but for now the code is not pu
 - Multi-VM scenarios.
 - OS package repository cache/proxy server.
 - A system for users to upload their scenarios.
+- Downloadable scenarios (OVA).
 - Translation of texts to multiple languages.
 - Guided learning system.
 - Blog or article system.
