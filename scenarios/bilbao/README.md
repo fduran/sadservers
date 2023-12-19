@@ -33,3 +33,9 @@ else
   echo "NO"
 fi
 ```
+
+## Clues
+
+<b>1. </b> Look at the manifest: <kbd>cat manifest.yml</kbd>. Check the pod status with <kbd>kubectl get pod</kbd> and <kbd>kubectl describe pod/nginx-deployment-$hash</kbd><br><br>
+<b>2. </b> From the <kbd>kubectl describe pod</kbd> command we see a message from Kubernetes scheduler: <i>0/1 nodes are available: 1 node(s) didn't match Pod's node affinity/selector</i>. Add the missing label to the node:  <kbd>kubectl label nodes node1 disk=ssd</kbd> and delete the pod or delete in the manifest the nodeSelector and <kbd>kubectl apply -f manifest.yml</kbd><br><br>
+<b>3. </b> The Nginx pod is still not running. From the <kbd>kubectl describe pod</kbd> command again we see a new message from Kubernetes scheduler: <i>0/1 nodes are available: 1 Insufficient memory</i>. Delete or lower in the manifest the resource.requests.memory value and <kbd>kubectl apply -f manifest.yml</kbd>.<br><br>If there's an error pulling the image: <i>ErrImagePull</i>, then there's a problem with the local Docker registry, you can fix it with <kbd>docker restart docker-registry</kbd>.
