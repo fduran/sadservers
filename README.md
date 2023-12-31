@@ -182,13 +182,13 @@ This project may become Open Source at some point but for now the code is not pu
 - ~~Guided scenarios with stop-and-resume VMs.~~ DONE
 - ~~User comment system.~~ DONE [piggy-backing on Github](https://github.com/fduran/sadservers/discussions)
 - ~~Add tags to scenarios~~ DONE
+- ~~Blog or article system.~~ [DONE](https://docs.sadservers.com/) 
 - Multi-VM scenarios.
 - OS package repository cache/proxy server.
 - A system for users to upload their scenarios.
 - Downloadable scenario VMs (OVA).
 - Translation of texts to multiple languages.
 - Guided learning system.
-- Blog or article system.
 - Login using Github or Gmail account.
 - Look into WebAssembly (WASM) so users can run (some) scenarios in the browser.
 - Look into alternative hosting methods:
