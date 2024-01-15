@@ -183,6 +183,7 @@ This project may become Open Source at some point but for now the code is not pu
 - ~~User comment system.~~ DONE [piggy-backing on Github](https://github.com/fduran/sadservers/discussions)
 - ~~Add tags to scenarios~~ DONE
 - ~~Blog or article system.~~ [DONE](https://docs.sadservers.com/) 
+- ~~API~~ [DONE](https://docs.sadservers.com/docs/api/)
 - Multi-VM scenarios.
 - OS package repository cache/proxy server.
 - A system for users to upload their scenarios.
