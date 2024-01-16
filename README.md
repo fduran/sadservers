@@ -12,6 +12,7 @@
 
 - [What](#what)
 - [Why](#why)
+- [When](#when)
 - [How Does It Look](#how-does-it-look)
 - [Architecture](#architecture)
     - [Web Server](#web-server)
@@ -52,6 +53,13 @@ To scratch a personal itch and because there's nothing like this that I'm aware 
 It's also my not-so-secret hope that a sophisticated enough version of SadServers could be used by tech companies (or for companies that carry on job interviews on their behalf) to automate or facilitate the Linux troubleshooting interview section.  
 
 An annoyance I found during my interviews is that sometimes instead of helping, the interviewer unintentionally misleads you, or you feel like you are in a tv game where you have to maximize for some arbitrary points and come up with an game strategy that doesn't reflect real incident situations (do I try to keep solving this problem or do I move to the next one, which one is better?).
+
+
+## When
+
+SadServers was "launched" in [Hacker News in October 2022](https://news.ycombinator.com/item?id=33344142), reaching the #2 position that day.
+
+![HN](hackernews.jpeg)
 
 ## How does it look?
 
