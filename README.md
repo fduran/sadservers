@@ -177,7 +177,7 @@ This project may become Open Source at some point but for now the code is not pu
 
 ## Issues
 
-See [Issues](/issues)
+See [Issues](https://github.com/fduran/sadservers/issues)
 
 ## Roadmap
 
