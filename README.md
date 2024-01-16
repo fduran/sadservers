@@ -20,6 +20,7 @@
     - [Scenario Instances](#scenario-instances)
     - [Replay System](#replay-system)
     - [Resumable VMs](#resumable-vms)
+    - [API](#api)
     - [Other Infrastructure Services](#other-infrastructure--services)
 - [Site Priorities](#site-priorities)
     - [User Experience](#user-experience)
@@ -131,6 +132,12 @@ Once the resumable instance is terminated, the user can choose to create another
 
 ![instance_lifecycle](instance_lifecycle.png)
 
+### API
+
+SadServers offers an API, built with the [Django REST framework](https://www.django-rest-framework.org/) and with a web interface at [https://sadservers.com/api/](https://sadservers.com/api/).
+
+See the full [API Documentation](https://docs.sadservers.com/docs/api/).
+
 ### Other Infrastructure & Services
 
 Without a lot of detail, there's quite a bit of auxiliary services needed to run a public service in a decent "production-ready" state. This includes notification services (AWS SES for email for example), logging service, external uptime monitoring service, scheduled backups, error logging (like [Sentry](https://sentry.io/)), infrastructure as code (Hashicorp [Terraform](https://www.terraform.io/) and [Packer](https://www.packer.io/)).
@@ -170,9 +177,7 @@ This project may become Open Source at some point but for now the code is not pu
 
 ## Issues
 
-- Opening a new scenario while one is ongoing will invalidate the session of the first one. Clues are based on sessions so the clues displayed will be that of the latest session, which will be incorrect for previous scenarios.     
-- Sometimes the "Check My Solution" button won't work properly. One cause of this is refreshing the scenario screen (navigation in this screen without using the buttons/links provided like refreshing or going back is problematic).  
-- There are scenario issues, the most common ones are: not very clear wording of the problem statement and the solution checker giving false negatives. Please give me feedback so I can improve them.
+See [Issues](/issues)
 
 ## Roadmap
 
