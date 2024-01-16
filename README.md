@@ -57,7 +57,7 @@ An annoyance I found during my interviews is that sometimes instead of helping, 
 
 ## When
 
-SadServers was "launched" in [Hacker News in October 2022](https://news.ycombinator.com/item?id=33344142), reaching the #2 position that day.
+SadServers was "launched" in [Hacker News in October 2022](https://news.ycombinator.com/item?id=33344142), reaching the #2 position that day and yes, it suffered from the ["HN hug of death"](https://medium.com/devops-dev/sadservers-and-the-hacker-news-hug-of-death-a-postmortem-af20ddc58526).
 
 ![HN](hackernews.jpeg)
 
