@@ -6,7 +6,9 @@
 [![x](https://img.shields.io/twitter/follow/sadservers_com)](https://twitter.com/sadservers_com)&nbsp;&nbsp;&nbsp;
 [![mastodon](https://img.shields.io/mastodon/follow/109892696792748894)](https://mastodon.social/@sadservers)&nbsp;&nbsp;&nbsp;
 [![uptime](https://img.shields.io/uptimerobot/ratio/m792420367-f091e387ec222bcb6558559a)](https://stats.uptimerobot.com/ZRGoBu7Kp9)&nbsp;&nbsp;&nbsp;
-[!["Buy Me A Coffee"](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/sadservers)
+[!["Buy Me A Coffee"](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/sadservers)  
+
+[Make Money Creating SadServers Scenarios](https://docs.sadservers.com/docs/make-money-creating-scenarios/)
 
 **Table of Contents:**  
 
@@ -217,21 +219,7 @@ I'm not looking for web development (SadServers.com front-end and back-end) help
 - Feedback on the scenarios and general website user experience.
 - Creation of scenarios.
 
-If you want to create a scenario, these are the requirements:  
-
-- A clear (not ambiguous) problem statement, ideally one that can be shown with a command or combination of commands.  
-- (Optionally but very desirable): a clear pass/fail test for the user that they can run in the form of a command or commands and therefore it can be checked with a Bash script, i. e., if we run a check.sh script, it will always return a binary result (strings "OK" and "NO" for example). 
-    - This <i>check.sh</i> script has to be accessible by the user (they can actually run it to verify their work), so the solution should not be given away in this script. For example, if the problem is about a process that needs to be killed, if we check in the script by testing for example `ps au|grep rogue`, then we are revealing the name of the process.
-- For scenarios where a good check script is not possible, there's an option in the system to just not use the "Check solution" option for a scenario.
-- A description of one solution to the problem, favoring simple and "production" ones. Solutions in general should be self-contained to the Linux server in the scenario, i.e, it shouldn't require users to copy information out to their laptop/workstations and work on the solution there.  
-- An automated way to create the problem. This is, a script and other files that will set up the problem fully on a non-licenced Linux distribution available in AWS. An Ansible playbook and auxiliary files would be ideal. See examples in [scenarios](scenarios).
-- The scenario can run on an AWS instance, ideally a t3a.nano one (0.5 GiB). Unless the scenario is specific to a Linux distro, I favour recent official AWS Debian AMIs.
-- Optionally, a set of clues or tips that will increasingly get the user closer to the solution.  
-- Other:
-    - I'm using ports :8080 and :6767 for the shell-to-web and agent, so don't try and run services on those ports.
-    - Currently only supporting one VM scenarios and not multiple VM scenarios.
-    - VMs should be fully self-contained and not need the Internet for anything, ie, the user wouldn't need to initiate connections from the scenario VM to the Internet save for ICMP (ping) and DNS traffic. A possible exception would be access to an OS package repository proxy. 
-    - The scenario VM needs to survive a reboot, as in the problem still works.
+Currently there's a pay-for-scenario bounty request; see the details at [Make Money Creating SadServers Scenarios](https://docs.sadservers.com/docs/make-money-creating-scenarios/).
 
 ## Scenarios
 
