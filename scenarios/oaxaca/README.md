@@ -8,6 +8,20 @@ The file <i>/home/admin/somefile</i> is open for writing by some process. Close 
 
 <kbd>lsof /home/admin/somefile</kbd> returns nothing.
 
+check.sh
+```
+#!/usr/bin/bash
+res=$(lsof /home/admin/somefile)
+res=$(echo $res|tr -d '\r')
+
+if [[ "$res" = "" ]]
+then
+  echo -n "OK"
+else
+  echo -n "NO"
+fi
+```
+
 
 ## Clues
 
