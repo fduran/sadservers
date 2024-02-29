@@ -27,6 +27,6 @@ fi
 
 ## Clues
 
-<b>1. </b>Running <kbd>etcdctl get foo</kbd> shows an error: <kbd>certificate has expired or is not yet valid: current time ... is after ...</kbd>, it's clear the server time is one year ahead, to fix set the server time to the actual time, for ex: <kbd>sudo date -s "last year"</kbd> (Next "clue" gives the solution).<br><br>
+<b>1. </b>Running <kbd>etcdctl get foo</kbd> shows an error: <kbd>certificate has expired or is not yet valid: current time ... is after ...</kbd>, it's clear the server time is one year ahead, to fix set the server time to the actual time, for ex: <kbd>sudo date -s "2023-01-01"</kbd> (Next "clue" gives the solution).<br><br>
 
 <b>2. </b>Not easy to see unless looking for it (for example using <i>tcpdump</i>) but there's an iptables rule that redirects TCP traffic going to the etcd port :2379 into port :443 , and there's an Nginx server listening to that port: <kbd>sudo /usr/sbin/iptables -t nat -L</kbd>, deleting this rule will fix the remaining issue, for ex: <kbd>sudo /usr/sbin/iptables -t nat -F</kbd>
