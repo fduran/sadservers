@@ -1,12 +1,11 @@
 # SadServers
 
-[SadServers](https://sadservers.com/) is a SaaS where users can test their Linux troubleshooting skills on real Linux servers in a "Capture the Flag" fashion.
+[SadServers](https://sadservers.com/) is a SaaS where users can test their Linux and DevOps troubleshooting skills on real Linux servers in a "Capture the Flag" fashion.
 
 [![mail](https://img.shields.io/badge/info%40sadservers.com-blue)](mailto:info@sadservers.com)&nbsp;&nbsp;&nbsp;
 [![x](https://img.shields.io/twitter/follow/sadservers_com)](https://twitter.com/sadservers_com)&nbsp;&nbsp;&nbsp;
 [![mastodon](https://img.shields.io/mastodon/follow/109892696792748894)](https://mastodon.social/@sadservers)&nbsp;&nbsp;&nbsp;
-[![uptime](https://img.shields.io/uptimerobot/ratio/m792420367-f091e387ec222bcb6558559a)](https://stats.uptimerobot.com/ZRGoBu7Kp9)&nbsp;&nbsp;&nbsp;
-[!["Buy Me A Coffee"](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/sadservers)  
+[![uptime](https://img.shields.io/uptimerobot/ratio/m792420367-f091e387ec222bcb6558559a)](https://stats.uptimerobot.com/ZRGoBu7Kp9) 
 
 [Make Money Creating SadServers Scenarios](https://docs.sadservers.com/docs/make-money-creating-scenarios/)
 
@@ -38,7 +37,7 @@
 
 ## What
 
-[SadServers](https://sadservers.com/) is a SaaS where users can test their Linux (Docker, Kubernetes...)troubleshooting skills on real Linux servers in a "Capture the Flag" fashion.  
+[SadServers](https://sadservers.com/) is a SaaS where users can test their Linux (Docker, Kubernetes...) troubleshooting skills on real Linux servers in a "Capture the Flag" fashion.  
 
 There's a collection of scenarios, a description of what's wrong and a test to check if the issue has been solved. The servers are spun up on the spot, users get an "SSH" shell via a browser window to an ephemeral server (destroyed after the allotted time for solving the challenge) and then they can try and solve the problem.  
 
