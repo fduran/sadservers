@@ -18,12 +18,17 @@
 - [Architecture](#architecture)
     - [Web Server](#web-server)
     - [Task Queue](#task-queue)
-    - [Permanent Storage](#permanent-storage)
+    - [Permanent Storage: SQLite](#permanent-storage-sqlite)
     - [Scenario Instances](#scenario-instances)
     - [Replay System](#replay-system)
     - [Resumable VMs](#resumable-vms)
     - [API](#api)
     - [Other Infrastructure Services](#other-infrastructure--services)
+- [Other Development Practices](#other-development-practices)
+    - [Feature Flags](#feature-flags)
+    - [Linting](#linting)
+    - [Functions and Comments](#functions-and-comments)
+    - [Automated Testing](#automated-testing)
 - [Site Priorities](#site-priorities)
     - [User Experience](#user-experience)
     - [Security](#security)
@@ -87,9 +92,23 @@ New server requests are queued and processed in the background. On the front-end
 
 Instances are requested on AWS using [Boto3](https://github.com/boto/boto3), based on scenario images. A Celery beat scheduler checks for expired instances and kills them. 
 
-### Permanent Storage
+### Permanent Storage: SQLite
 
-A [PostgreSQL](https://www.postgresql.org/) database is the permanent storage backend, the first choice for RDBMS. [SQLite](https://www.sqlite.org/index.html) is a valid alternative for sites without a high rate of (concurrent) writes.  
+[SQLite](https://www.sqlite.org/index.html) is the database currently used in SadServers.
+
+What makes SQLite a good choice? Basically it's fast, solid, cheap and easy to manage. The criteria I'd have for using SQLite would be:  
+- The application is not so write-heavy that you get SQlite **lock errors** ()"SQLITE_BUSY").
+- The **cost** of the project or projects that depend on SQLite is less than a few thousand dollars. The reasoning here is that a managed PostgreSQL (or MySQL) database, say AWS RDS with "High Availability" (two zones, PITR) runs in the hundreds of dollars.
+- **Data and uptime criticality**: you are fine with the downtime and possible loss of data caused by not having automatic database fail-over and recovery; you'll recover quickly by simply copying over a backup file. Note that if you are doing frequent SQlite copies (or better yet, continuously stream to a copy) then you are almost sure guaranteed that you'll have your data back and the database up and running (except for the gap of time since the database or server incident and recovery). Due to their complexity and failure modes, regular database systems may be hard to recover and it may take a long time to recover (ingesting a lot of backed-up WALs for example).
+
+Otherwise, the [PostgreSQL](https://www.postgresql.org/) database is a good default first choice for RDBMS (and can be considered for JSON data for example), everything else being equal (eg, if you are more familiar with MySQL, go with MySQL).
+
+A couple of notes:
+- I had some SQLite lock errors but they went away after using `PRAGMA journal_mode = WAL`. There are other "PRAGMA" Sqlite settings that help with locking, like using a longer `PRAGMA busy_timeout`.
+- For backing up SQlite, even if it's a file, you don't want to use the OS file copy command since this can lead to corruption; instead use SQlite `.backup` command, for ex: `sqlite3 db.sqlite3 ".backup 'db.backup.sqlite3'"`.  
+For continuous backup, you can use [Litestream](https://litestream.io/). By streaming a copy of SQLite offsite, you are getting an availability that is reduced only to the time of being alerted and downloading the latest copy from the cloud into your (perhaps new) server. The data lost is also reduced to the minimum.
+
+I've seen the argument that SQLite is a good local development option but this is backwards; if you have Postgres (or Mysql or whatever) in production, you want to use the same database and version (and be able to change versions easily), and this is easily achieved with just one docker command (for ex `docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres:16.3`).
  
 ### Proxy Server
 
@@ -151,6 +170,42 @@ See the full [API Documentation](https://docs.sadservers.com/docs/api/).
 
 Without a lot of detail, there's quite a bit of auxiliary services needed to run a public service in a decent "production-ready" state. This includes notification services (AWS SES for email for example), logging service, external uptime monitoring service, scheduled backups, error logging (like [Sentry](https://sentry.io/)), infrastructure as code (Hashicorp [Terraform](https://www.terraform.io/) and [Packer](https://www.packer.io/)).
 
+## Other Development Practices
+
+### Feature Flags
+
+A feature flag or toggle is the ability to be able to turn off or on a piece of software code. In its fancy variation it can also allow for a percentage of the code execution to enter the gated code, this would be an implementation of "canary" releases.  
+
+There's even a couple feature flags SaaS companies (I mean there's a SaaS for almost everything so why not) but I found them very expensive.
+
+Some say feature flags allow for the separation of deployments (code in prod) and releases (code executed in prod). This sounds very good but if you are not testing the feature-flagged code then what's really the difference between the code being there and not executed and the code living in some Git branch? I think without testing it only gives you some basic linter-level asurances (like libraries are installed, variables not duplicated) and the great advantage of not having to merge a big branch into main.
+
+I've used feature flags (without canary) for big changes like turning on Stripe payments, and they all worked great. In Django to feature-flag the templates and urls is not easy if you try to do directly in their code or in the views but it's easy to do using Django's middleware.
+
+### Linting
+
+I use `Flake8` as linter and fix (almost) all the flagged issues so there's no warnings. The default Python PEP 8 line length of 79 characters is ridiculous even when working on a small screen, so I'm using it with `--max-line-lenght=100`, which is still pretty short (goes up to half the page in Github for example). I've also used `Pylint` in other projects and I don't remember any significant difference between the two.  
+
+Ideally you want to run the linting automatically in your CI/CD chain as soon as you commit your code.
+
+### Functions and Comments
+
+I group functions that deal with different topics in separate files; if I'm scrolling more than a few "pages" long on my screen that's a sign I should start thinking about breaking up the file.  
+
+Functions should be short and doing mostly one thing. That said, and against one famous book author, breaking up all functions when they reach a few lines of code (did he say five or so!?) makes no sense to me. I have a lot of small "auxiliary" functions and I do have a couple long ones with the basic workflow, so I can follow in one place most of the logic. Breaking one of those would result in a lot of duplication, passing the same things back and forth and jumping around reading back and forth to follow the code path. I optimize code for (humans) reading.
+
+The "don't write comments; code should speak for itself" crowd, well, I don't know where they've worked that they had such self-describing code but even with ideal code, it cannot explain the **why**. Adding context with the reasons why and explaining tricky code are two damn good reasons to write comments. Basically everything you'd forget a few months from now or that somebody coming to the project may ask about, write about.
+
+I wouldn't mind writing type hints for Python functions but I'm not sure it would have caught any issues.
+
+### Automated Testing
+
+I confess I don't do TDD :-|
+
+The most valuable tests for me, in this project, are end-to-end tests. I use two types of automated tests:  
+
+- Code sanity check: it's `pytest` running in Github Actions whenever I push code, which calls [playwright](https://playwright.dev/) pretending to be a browser and it does some basic site navigation. This is a simple smoke test making sure there are no big issues in the Django project, and it has already saved me from things like a typo in a config file breaking everything.  
+- End-to-end full path check. Every x minutes I run a "happy path" test from outside the production environment using the SadServers API, reproducing all the server-side part of what a user does when they create a new scenario VM. This test runs the main code "normal" path and uses all real dependencies (database, AWS etc) so it will catch any big internal or dependencies issues. I think this is the best "bang for the buck" test one can do in a SaaS.
 
 ## Site Priorities
 
