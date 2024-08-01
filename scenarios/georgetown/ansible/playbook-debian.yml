@@ -40,6 +40,28 @@
       mode: a+wx
       state: directory
 
+  - name: Copy georgetown systemd files
+    become: true
+    copy:
+      src: {{ item.src }}
+      dest: {{ item.dest }}
+    with_items:
+      - { src: ../files/mock-build.service, dest: /etc/systemd/system/mock-build.service }
+      - { src: ../files/secondary-service.service, dest: /etc/systemd/system/secondary-service.service }
+
+  - name: Start mock build application
+    become: true
+    systemd:
+      name: mock-build
+      state: started
+
+  - name: Start secondary service
+    become: true
+    systemd:
+      name: secondary-service
+      state: started
+      enabled: yes
+
   - name: copy check.sh
     copy:
       src: ../files/check.sh
