@@ -23,6 +23,7 @@
     - [Replay System](#replay-system)
     - [Resumable VMs](#resumable-vms)
     - [API](#api)
+    - [Scenario Command History Logging](scenario-command-history-logging)
     - [Other Infrastructure Services](#other-infrastructure--services)
 - [Other Development Practices](#other-development-practices)
     - [Feature Flags](#feature-flags)
@@ -165,6 +166,51 @@ Once the resumable instance is terminated, the user can choose to create another
 SadServers offers an API, built with the [Django REST framework](https://www.django-rest-framework.org/) and with a web interface at [https://sadservers.com/api/](https://sadservers.com/api/).
 
 See the full [API Documentation](https://docs.sadservers.com/docs/api/).
+
+### Scenario Command History Logging
+
+For certain scenario instances, there's the capability of logging the user shell command history and displaying this command history in the user's dashboard.
+
+This is currently enabled for Pro accounts only and logs are stored for 30 days (any of that can change). The feature is still in "beta" mode with no SLOs.
+
+The main ideas for the implementation can be seen in the diagram below. The workflow is:  
+
+  - Upon shell login, `/etc/bash.bashrc` file is executed, where we use the `logger` command to log the last command in the shell history to the system syslog facility.
+  - syslog writes to a `/var/log/bash.log` file
+  - [Grafana Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/) watches that log file and ships new lines to a [Grafana Loki](https://grafana.com/oss/loki/) server with a label for the instance ID.
+  - The user dashboard at the SadServers.com website queries the Loki server for logs in instances belonging to the user.  
+
+![vm_logging](vm_logging.jpg)
+
+**Details**
+
+The ElasticSearch stack "ELK", with a log shipper like `fluent bit` is another back-end option, but I have PTSD from managing in the past a large ElasticSearch install and don't want to spend a lot of time managing it. Loki is much simpler and takes up way less storage space.
+
+In the `/etc/bash.bashrc` file I'm using this code:
+
+```
+HISTFILESIZE=10000
+shopt -s histappend
+
+myhistory() { history 1 | awk '{ \$1=""; print}'; return \$?; }
+export PROMPT_COMMAND='logger -p local6.debug "\$(myhistory)"'
+```
+
+This code avoids sending duplicate back-to-back commands in the history (I have conflicting feelings about this), then it returns the last command in the shell `history` and uses Bash built-in `PROMPT_COMMAND` as a way to send that command text to a syslog facility via `logger`, which also adds a timestamp and user name.  
+
+Syslog sends that command text line to a `/var/log/bash.log` file and Promtail does some parsing and labeling and continuously ships the contents of that log file to the Loki server (which is not exposed to the Internet and fronted by an Nginx server for access and rate control). The logs of the instance are identified by the AWS instance id.  
+
+When a logged-in user goes to their SadServers dashboard, there's code that goes to the Loki API endpoint and queries it for logs belonging to instances that the user created in the last 30 days.
+
+All the changes needed in the scenario VM so it ships command history logs are not saved in the VM AMI, as in I'd have to re-do all the scenarios AMIs at least once (and again any time I make any change). Instead, all this changes are dynamically inserted at boot time via [AWS user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) via a shell script.
+
+The UX at the moment:  
+
+Dashboard:  
+![command_logs](command_logs.png) 
+
+Instance command history:
+![command_history](command_history.png)  
 
 ### Other Infrastructure & Services
 
