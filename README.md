@@ -23,7 +23,7 @@
     - [Replay System](#replay-system)
     - [Resumable VMs](#resumable-vms)
     - [API](#api)
-    - [Scenario Command History Logging](scenario-command-history-logging)
+    - [Scenario Command History Logging](#scenario-command-history-logging)
     - [Other Infrastructure Services](#other-infrastructure--services)
 - [Other Development Practices](#other-development-practices)
     - [Feature Flags](#feature-flags)
@@ -202,7 +202,9 @@ Syslog sends that command text line to a `/var/log/bash.log` file and Promtail d
 
 When a logged-in user goes to their SadServers dashboard, there's code that goes to the Loki API endpoint and queries it for logs belonging to instances that the user created in the last 30 days.
 
-All the changes needed in the scenario VM so it ships command history logs are not saved in the VM AMI, as in I'd have to re-do all the scenarios AMIs at least once (and again any time I make any change). Instead, all this changes are dynamically inserted at boot time via [AWS user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) via a shell script.
+All the changes needed in the scenario VM so it ships command history logs are not saved in the VM AMI, as in I'd have to re-do all the scenarios AMIs at least once (and again any time I make any change). Instead, all this changes are dynamically inserted at boot time via [AWS user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) via a shell script.  
+
+As an issue, the replay asciinema implementation interferes with this history logging system, as in for VMs with the replay implementation, the commands are only logged once you do another shell login like "sudo su".
 
 The UX at the moment:  
 
