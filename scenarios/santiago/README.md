@@ -2,10 +2,30 @@
 
 ## Description
 
-Alice the spy has hidden a secret number combination, find it using these instructions:<br><br>
-1) Find the number of <b>lines</b> with occurrences of the string <b>Alice</b> (case sensitive) in the <i>*.txt</i> files in the <i>/home/admin</i> directory<br>
-2) There's a file where <b>Alice</b> appears exactly once. In that file, in the line after that "Alice" occurrence there's a number.<br>
-Write both numbers consecutively as one (no new line or spaces) to the solution file. For example if the first number from 1) is <i>11</i> and the second <i>22</i>, you can do <kbd>echo -n 11 > /home/admin/solution; echo 22 >> /home/admin/solution</kbd> or echo "1122" > /home/admin/solution.
+Bob finds himself enamored with Alice, who is more interested in solving problems on the sadservers.com than going on a date. Recognizing that Alice enjoys a good challenge, Bob decides to win her over by impressing her with his problem-solving skills.
+
+Alice, aware of Bob's weak grasp of Linux, crafts a unique challenge for him. She challenges Bob to uncover a secret number hidden in text files, cleverly incorporating her name into some of them. 
+
+The challenge involves:
+
+1. Counting the number of lines in all the *.txt files where Alice has discreetly inscribed her name <b>"Alice"</b>, considering case sensitivity. This count becomes the first part of the secret number, denoted as x. (x can have any number of digits).
+2. Identifying a special text file where the word <b>"Alice"</b> appears <b>just once</b>. The second part of the secret number, named y, is the numerical value that <b>immediately follows the string "Alice"</b> in this unique file. (y can also have any number of digits)
+
+
+To successfully win Alice's attention, Bob must <b>concatenate x and y</b> and write the result in the solution file. 
+
+For example, if <i> x = 11 </i> and <i> y = 22 </i>, Bob should write <i>1122</i> in the solution file located at <i> /home/admin/solution </i>.
+
+<kbd>echo -n 11 > /home/admin/solution; echo 22 >> /home/admin/solution</kbd>
+
+or
+
+<kbd>echo "1122" > /home/admin/solution</kbd>
+
+Bob, recognizing his weakness in Linux, seeks your assistance in solving this challenge. By helping Bob succeed, you not only assist your dear friend but also pave the way for a potential romantic connection with Alice. Can you lend a hand in this Linux adventure?
+
+<b> Note: For the scope of this problem, you only need to check all the *.txt files in /home/admin directory for numbers x and y. </b>
+
 
 ## Test
 
