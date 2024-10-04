@@ -301,13 +301,14 @@ See [Issues](https://github.com/fduran/sadservers/issues)
 - ~~Add tags to scenarios~~ DONE
 - ~~Blog or article system.~~ [DONE](https://docs.sadservers.com/) 
 - ~~API~~ [DONE](https://docs.sadservers.com/docs/api/)
-- Multi-VM scenarios.
+- ~~Record Bash command history~~ [DONE]
+- ~~Login using Gmail account.~~ [DONE]
+- ~~Invite system.~~ [DONE]
+- Multi-VM scenarios, "SRE Simulator"
 - OS package repository cache/proxy server.
-- A system for users to upload their scenarios.
 - Downloadable scenario VMs (OVA).
 - Translation of texts to multiple languages.
 - Guided learning system.
-- Login using Github or Gmail account.
 - Look into WebAssembly (WASM) so users can run (some) scenarios in the browser.
 - Look into alternative hosting methods:
     - Kubernetes for Dockerized scenarios.
