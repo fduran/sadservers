@@ -1,0 +1,967 @@
+[
+  {
+    "slug": "abaokoro",
+    "title": "\"Abaokoro\": Restore MySQL Databases Spooked by a Ghost",
+    "description": "There are three databases that need to be restored. You need to create three databases called \"first\", \"second\" and \"third\" and restore the databases using the file \"/home/admin/dbs_to_restore.tar.gz\". If you encounter an issue while restoring the database, fix it. Credit: [Sebastian Segovia](https://www.linkedin.com/in/sebastian-segovia-a7518a228/)",
+    "excerpt": "There are three databases that need to be restored. You need to create three databases called \"first\", \"second\" and \"third\" and restore the databases using the file \"/home/admin/dbs_to_restore.tar.gz\". If you encounter...",
+    "tags": [
+      "data processing",
+      "linux-other",
+      "mysql"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "abaokoro/README.md"
+  },
+  {
+    "slug": "apia",
+    "title": "\"Apia\": Needle in a Haystack",
+    "description": "In a directory _/home/admin/data-, there are multiple files, all of them with same content. One of these files has been modified, a word was added. You need to identify which word it is and put it in the solution file (both newline terminated or not are accepted).",
+    "excerpt": "In a directory _/home/admin/data-, there are multiple files, all of them with same content. One of these files has been modified, a word was added. You need to identify which word it is and put it in the solution file...",
+    "tags": [
+      "data processing",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "apia/README.md"
+  },
+  {
+    "slug": "atrani",
+    "title": "\"Atrani\": Modify a SQlite3 Database",
+    "description": "A developer created a script _/home/admin/readdb.py_ that tests access to a database. Without modifying the readdb.py file, change the database so that running the script returns the string \"John Karmack\".",
+    "excerpt": "A developer created a script _/home/admin/readdb.py_ that tests access to a database. Without modifying the readdb.py file, change the database so that running the script returns the string \"John Karmack\".",
+    "tags": [
+      "data processing",
+      "linux-other",
+      "sql"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "atrani/README.md"
+  },
+  {
+    "slug": "bangalore",
+    "title": "Bangalore: Envoy Panics",
+    "description": "There is an Envoy proxy routing traffic to two unhealthy backend services but the Envoy container won't start. Your first task is to fix that. When the number of healthy backends falls under a panic threshold (default 50%), Envoy enters a _panic mode_ and it will either send traffic to all upstream hosts or to none at all. We are simulating this condition by returning an HTTP 503 status code from the _/health_ endpoint in both backends. In our case Envoy is sending traffic to all upstream services. Your second task is to change the panic Envoy behaviour so that it does not route any traffic to unhealthy services and instead Envoy returns \"no healthy upstream\". (Do not change anything in the backend services). There can also be other Envoy configuration issues you need to fix.",
+    "excerpt": "There is an Envoy proxy routing traffic to two unhealthy backend services but the Envoy container won't start. Your first task is to fix that. When the number of healthy backends falls under a panic threshold (default...",
+    "tags": [
+      "docker",
+      "envoy",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "bangalore/README.md"
+  },
+  {
+    "slug": "bata",
+    "title": "\"Bata\": Find in /proc",
+    "description": "A spy has left a password in a file in _/proc/sys_ . The contents of the file start with _\"secret:\"_ (without the quotes). Find the file and save the word after \"secret:\" to the file _/home/admin/secret.txt_ with a newline at the end (e.g. if the file contents were \"secret:password\" do: echo \"password\" > /home/admin/secret.txt). (Note there's no root/sudo access in this scenario).",
+    "excerpt": "A spy has left a password in a file in _/proc/sys_ . The contents of the file start with _\"secret:\"_ (without the quotes). Find the file and save the word after \"secret:\" to the file _/home/admin/secret.txt_ with a...",
+    "tags": [
+      "linux-other",
+      "pro"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "bata/README.md"
+  },
+  {
+    "slug": "batumi",
+    "title": "\"Batumi\": Troubleshoot \"A\" cannot connect to \"B\"",
+    "description": "There is a web server (Caddy) on HTTP port :80 but curl http://127.0.0.1 doesn't work. Find out what's wrong and make the necessary fixes so the web server returns a URL. Note: as a limitation, the file _/home/admin/db_connector.py_ must not be modified so that the challenge is considered solved properly. The web server has to respond on the IP address 127.0.0.1; not only on \"localhost\".",
+    "excerpt": "There is a web server (Caddy) on HTTP port :80 but curl http://127.0.0.1 doesn't work. Find out what's wrong and make the necessary fixes so the web server returns a URL. Note: as a limitation, the file...",
+    "tags": [
+      "bash",
+      "caddy",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "batumi/README.md"
+  },
+  {
+    "slug": "bekasi",
+    "title": "\"Bekasi\": Supervisor your variables",
+    "description": "There is an nginx service running on port 443, it is the main web server for the company and looks like a new employee has deployed some changes to the configuration of supervisor and now it is not working as expected. if you try to access curl -k https://bekasi it should return Hello SadServers! but for reason it is not. You cannot modify files from the /home/admin/bekasi folder in order to pass the check.sh You must find out why and fix it.",
+    "excerpt": "There is an nginx service running on port 443, it is the main web server for the company and looks like a new employee has deployed some changes to the configuration of supervisor and now it is not working as expected....",
+    "tags": [
+      "linux-other",
+      "nginx",
+      "supervisord"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "bekasi/README.md"
+  },
+  {
+    "slug": "belo-horizonte",
+    "title": "\"Belo-Horizonte\": A Java Enigma",
+    "description": "(Credit for the idea: <i>fuero</i>)<br><br> There is a one-class Java application in your /home/admin directory. Running the program will print out a secret code, or you may be able to extract the secret from the class file without executing it but I'm not providing any special tools for that.<br><br> Put the secret code in a /home/admin/solution file, eg <kbd>echo \"code\" > /home/admin/solution</kbd>.",
+    "excerpt": "(Credit for the idea: <i>fuero</i>)<br><br> There is a one-class Java application in your /home/admin directory. Running the program will print out a secret code, or you may be able to extract the secret from the class...",
+    "tags": [
+      "disk volumes",
+      "java",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "belo-horizonte/README.md"
+  },
+  {
+    "slug": "bengaluru",
+    "title": "\"Bengaluru\": Kubernetes StatefulSet least known characteristic",
+    "description": "There's a Kubernetes cluster (created with \"k3d\") with two worker nodes and two pods on the node _k3d-cluster-agent-0_: a Deployment _demo-deployment-..._ and a StatefulSet _demo-statefulset-0_. Their manifests are identical except for the different kind of K8s resource. Make the node hosting the pods unavailable (it \"goes down\" or \"crashes\" without being deleted from k8s), for example with: docker stop k3d-mycluster-agent-0. After waiting for about a minute (_tolerationSeconds_ in the manifest is 30s, we shorten the K8S 5 minutes default so you don't have to wait so much, plus a grace period), both pods are marked as Terminating. While the Deployment pod is evicted and deployed onto the remaining available node _k3d-cluster-agent-1_, the StatefulSet _demo-statefulset-0_ is not (Why?). Make the StatefulSet pod _demo-statefulset-0_ run on the available node. Note: you can use k as a shortcut for kubectl.",
+    "excerpt": "There's a Kubernetes cluster (created with \"k3d\") with two worker nodes and two pods on the node _k3d-cluster-agent-0_: a Deployment _demo-deployment-..._ and a StatefulSet _demo-statefulset-0_. Their manifests are...",
+    "tags": [
+      "data processing",
+      "docker",
+      "json"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "bengaluru/README.md"
+  },
+  {
+    "slug": "bern",
+    "title": "\"Bern\": Docker web container can't connect to db container.",
+    "description": "There are two Docker containers running, a web application (Wordpress or WP) and a database (MariaDB) as back-end, but if we look at the web page, we see that it cannot connect to the database. <kbd>curl -s localhost:80 |tail -4</kbd> returns:<br><br> <code> &lt;body id=\"error-page\"&gt; &lt;div class=\"wp-die-message\">&lt;h1&gt;Error establishing a database connection&lt;/h1&gt;&lt;/div&gt;&lt;/body&gt; &lt;/html&gt; <br><br> </code> This is not a Wordpress code issue (the image is :latest with some network utilities added). What you need to know is that WP uses \"WORDPRESS_DB_\" environment variables to create the MySQL connection string. See the ./html/wp-config.php WP config file for example (from /home/admin).<br><br>",
+    "excerpt": "There are two Docker containers running, a web application (Wordpress or WP) and a database (MariaDB) as back-end, but if we look at the web page, we see that it cannot connect to the database. <kbd>curl -s localhost:80...",
+    "tags": [
+      "data processing",
+      "docker",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "bern/README.md"
+  },
+  {
+    "slug": "bharuch",
+    "title": "Bharuch: \"Lost in Translation\"",
+    "description": "There's a Docker container that runs a web server on port 3000, but it's not working. Using the tooling and resources provided in the server, make the container run correctly.",
+    "excerpt": "There's a Docker container that runs a web server on port 3000, but it's not working. Using the tooling and resources provided in the server, make the container run correctly.",
+    "tags": [
+      "docker",
+      "linux-other",
+      "pro"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "bharuch/README.md"
+  },
+  {
+    "slug": "bilbao",
+    "title": "\"Bilbao\": Basic Kubernetes Problems",
+    "description": "There's a Kubernetes Deployment with an Nginx pod and a Load Balancer declared in the manifest.yml file. The pod is not coming up. Fix it so that you can access the Nginx container through the Load Balancer.<br><br> There's no \"sudo\" (root) access.",
+    "excerpt": "There's a Kubernetes Deployment with an Nginx pod and a Load Balancer declared in the manifest.yml file. The pod is not coming up. Fix it so that you can access the Nginx container through the Load Balancer.<br><br>...",
+    "tags": [
+      "bash",
+      "disk volumes",
+      "docker"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "bilbao/README.md"
+  },
+  {
+    "slug": "bucharest",
+    "title": "\"Bucharest\": Connecting to Postgres",
+    "description": "A web application relies on the PostgreSQL 13 database present on this server. However, the connection to the database is not working. Your task is to identify and resolve the issue causing this connection failure. The application connects to a database named <i>app1</i> with the user <i>app1user</i> and the password <i>app1user</i>.<br><br> Credit <a href=\"https://twitter.com/PykPyky\" target=\"_blank\">PykPyky</a>",
+    "excerpt": "A web application relies on the PostgreSQL 13 database present on this server. However, the connection to the database is not working. Your task is to identify and resolve the issue causing this connection failure. The...",
+    "tags": [
+      "data processing",
+      "linux-other",
+      "postgres"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "bucharest/README.md"
+  },
+  {
+    "slug": "buenos-aires",
+    "title": "\"Buenos Aires\": Kubernetes Pod Crashing",
+    "description": "There are two pods: \"logger\" and \"logshipper\" living in the default namespace. Unfortunately, logshipper has an issue (crashlooping) and is forbidden to see what logger is trying to say. Could you help fix Logshipper? <br><br> Do not change the K8S definition of the logshipper pod. Use \"sudo\". <br><br>Because k8s takes a minute or two to change the pod state initially, the check for the scenario is made to fail in the first two minutes. <br><br>Credit <a href=\"https://www.linkedin.com/in/srivatsav-kondragunta/\">Srivatsav Kondragunta</a>",
+    "excerpt": "There are two pods: \"logger\" and \"logshipper\" living in the default namespace. Unfortunately, logshipper has an issue (crashlooping) and is forbidden to see what logger is trying to say. Could you help fix Logshipper?...",
+    "tags": [
+      "bash",
+      "docker",
+      "json"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "buenos-aires/README.md"
+  },
+  {
+    "slug": "capetown",
+    "title": "\"Cape Town\": Nginx borked",
+    "description": "There's an Nginx web server installed and managed by systemd. Running <kbd>curl -I 127.0.0.1:80</kbd> returns <kbd>curl: (7) Failed to connect to localhost port 80: Connection refused</kbd> , fix it so when you curl you get the default Nginx page.",
+    "excerpt": "There's an Nginx web server installed and managed by systemd. Running <kbd>curl -I 127.0.0.1:80</kbd> returns <kbd>curl: (7) Failed to connect to localhost port 80: Connection refused</kbd> , fix it so when you curl you...",
+    "tags": [
+      "linux-other",
+      "nginx",
+      "systemd"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "capetown/README.md"
+  },
+  {
+    "slug": "chennai",
+    "title": "\"Chennai\": Pull a Rabbit from a Hat",
+    "description": "There is a RabbitMQ (RMQ) cluster defined in a docker-compose.yml file. <br><br> Bring this system up and then run the producer.py script in such a way that is able to send messages to RMQ. In particular you have to send the message \"hello-lwc\". <br><br> - RMQ is a queuing system: messages are put in the queue with a \"producer\" and they are taken out from the other side by a \"consumer\". The queue name has to be the same for both. <br><br> - To send the message \"hello-lwc\": <kbd>python3 ~/producer.py hello-lwc</kbd>. Should return <kbd>Message sent to RabbitMQ</kbd>. \"IncompatibleProtocolError\" means RMQ is not working properly.<br><br> - To test consuming it: <kbd>python3 ~/consumer.py</kbd>, this will retrieve the next message from the queue and print it. Once everything is working send more than one message so there's at least one in the queue when the validation runs. <br><br> - <b>Do not change the consumer.py and producer.py files</b>; if you do the Check My Solution will fail.",
+    "excerpt": "There is a RabbitMQ (RMQ) cluster defined in a docker-compose.yml file. <br><br> Bring this system up and then run the producer.py script in such a way that is able to send messages to RMQ. In particular you have to...",
+    "tags": [
+      "bash",
+      "docker",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "chennai/README.md"
+  },
+  {
+    "slug": "command-line-murders",
+    "title": "\"The Command Line Murders\"",
+    "description": "This is the <a href=\"https://github.com/veltman/clmystery\" target=\"_blank\">Command Line Murders</a> with a small twist as in the solution is different<br><br> Enter the name of the murderer in the file <i>/home/admin/mysolution</i>, for example <kbd>echo \"John Smith\" > ~/mysolution</kbd> <br><br> Hints are at the base of the <i>/home/admin/clmystery</i> directory. Enjoy the investigation!",
+    "excerpt": "This is the <a href=\"https://github.com/veltman/clmystery\" target=\"_blank\">Command Line Murders</a> with a small twist as in the solution is different<br><br> Enter the name of the murderer in the file...",
+    "tags": [
+      "bash",
+      "git",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "command-line-murders/README.md"
+  },
+  {
+    "slug": "constanta",
+    "title": "\"Constanta\": Jumping Frog",
+    "description": "This is a \"hacking\" or Capture The Flag challenge. You need to copy the message at /home/user3/secret.txt into the /home/admin/solution.txt file.",
+    "excerpt": "This is a \"hacking\" or Capture The Flag challenge. You need to copy the message at /home/user3/secret.txt into the /home/admin/solution.txt file.",
+    "tags": [
+      "hack",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "constanta/README.md"
+  },
+  {
+    "slug": "depok",
+    "title": "\"Depok\": Nginx with Brotli",
+    "description": "As a devops engineer, you're tasked to add compression to the company website, actually a gaming shop. The website is running on an Nginx server, and you decide to add Brotli compression to it. Brotli has became very popular these days because of its high compression ratio. It's a generic-purpose lossless compression algorithm that compresses data using a combination of a modern variant of the LZ77 algorithm, Huffman coding, and 2nd order context modeling. For this purpose, you decided to compile the brotli modules yourself and add them to the Nginx server. The location of the Brotli source code is at /home/admin/ngx_brotli, and nginx source code, which is needed to compile the modules, is located at /home/admin/nginx-1.18.0. You've seen from the official ngx_brotli repository that first you need to compile the brotli dependencies and then configure and make modules for Nginx, once you've done that, you need to add the modules to the Nginx configuration. After installing the modules, you need to make sure the responses from the server are being served with compression. Create a port-forward to port 80 from the server and check the header Content-Encoding, responses must return br for Brotli compression. You could also use curl -H \"Accept-Encoding: br, gzip\" -I http://localhost to check the header. PD: something nice about Brotli is that it fails over to gzip if the client doesn't support Brotli, so curl -H \"Accept-Encoding: gzip\" -I http://localhost should return gzip instead.",
+    "excerpt": "As a devops engineer, you're tasked to add compression to the company website, actually a gaming shop. The website is running on an Nginx server, and you decide to add Brotli compression to it. Brotli has became very...",
+    "tags": [
+      "data processing",
+      "linux-other",
+      "nginx"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "depok/README.md"
+  },
+  {
+    "slug": "florence",
+    "title": "\"Florence\": Database Migration Hell",
+    "description": "You are working as a DevOps Engineer in a company and another devops left the company and left docker-compose unfinished. Generally, the problem revolves around migration and docker compose. You need to deploy application with database Postgresql via docker-compose. Additionally on front of the application there is an Nginx server and you need to fix it as well. You can test it with curl --cacert /etc/nginx/certs/sadserver.crt https://sadserver.local The source of code is in /home/admin/app",
+    "excerpt": "You are working as a DevOps Engineer in a company and another devops left the company and left docker-compose unfinished. Generally, the problem revolves around migration and docker compose. You need to deploy...",
+    "tags": [
+      "data processing",
+      "docker",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "florence/README.md"
+  },
+  {
+    "slug": "geneva",
+    "title": "\"Geneva\": Renew an SSL Certificate",
+    "description": "There's an Nginx web server running on this machine, configured to serve a simple \"Hello, World!\" page over HTTPS. However, the SSL certificate is expired. Create a new SSL certificate for the Nginx web server with the same Issuer and Subject (same domain and company information).",
+    "excerpt": "There's an Nginx web server running on this machine, configured to serve a simple \"Hello, World!\" page over HTTPS. However, the SSL certificate is expired. Create a new SSL certificate for the Nginx web server with the...",
+    "tags": [
+      "linux-other",
+      "nginx",
+      "ssl"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "geneva/README.md"
+  },
+  {
+    "slug": "gitega",
+    "title": "\"Gitega\": Find the Bad Git Commit",
+    "description": "The directory at _/home/admin/git_ has a Git repository with a Golang program and a test for it. To execute the test, from this \"git\" directory run: go test. The last (current HEAD) commit fails the test. Suppose the first commit passed the test. Find the (long hash) commit that first broke the test and enter it in the _/home/admin/solution_ file. For example: echo 9e80a7eb1b09385e93ab4a76cb2c93beec48fd9f > /home/admin/solution",
+    "excerpt": "The directory at _/home/admin/git_ has a Git repository with a Golang program and a test for it. To execute the test, from this \"git\" directory run: go test. The last (current HEAD) commit fails the test. Suppose the...",
+    "tags": [
+      "git",
+      "golang",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "gitega/README.md"
+  },
+  {
+    "slug": "hanoi",
+    "title": "\"Hanoi\": Find the Multitasking Users",
+    "description": "The Hanoi office has a Linux server with a large number of user accounts and groups. The system administrators need to identify which users belong to multiple groups for better access management. Given two files, users.txt and groups.txt, create a new file /home/admin/multi-group-users.txt containing the usernames of users who belong to more than one group, one username per line, sorted alphabetically. The users.txt file contains a list of usernames, one per line. The groups.txt file contains group names and their members, in the format group_name:user1,user2,user3.",
+    "excerpt": "The Hanoi office has a Linux server with a large number of user accounts and groups. The system administrators need to identify which users belong to multiple groups for better access management. Given two files,...",
+    "tags": [
+      "linux-other",
+      "new"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "hanoi/README.md"
+  },
+  {
+    "slug": "helsingor",
+    "title": "\"Helsing\u00f8r\": The first walls of postgres physical replication",
+    "description": "You're setting up a PostgreSQL database with replication, you decided to use Docker along with Docker Compose to make it easier to manage and test, after a few hours of work you finished the job and the master database is up and running, but you're having trouble with the replica. You need to figure out what's wrong with the replica and fix it. Since you are using Docker Compose, you can check the status of the running containers using docker compose ps (docker ps will do the job too). you may also want to check the logs of the containers. This is the file structure for this project: md /home/admin \u251c\u2500\u2500 postgres \u2502 \u251c\u2500\u2500 master \u2502 \u2502 \u251c\u2500\u2500 initdb.d \u2502 \u2502 \u2502 \u251c\u2500\u2500 01-roles.sql | | | |\u2500\u2500 02-replication.sql \u2502 \u2502 \u2502 \u2514\u2500\u2500 03-dataset.sql \u2502 \u2502 \u2514\u2500\u2500 postgres.conf \u2502 \u2514\u2500\u2500 replica \u2502 \u2502 \u2514\u2500\u2500 postgres.conf \u251c\u2500\u2500 docker-compose.yml \u2514\u2500\u2500 README.md All definition for the containers are inside docker-compose.yml file. You can get up the environment by running docker compose up -d and set it down by running docker compose down. If you make any change to the docker-compose.yml file, you can restart the containers by running docker compose up -d --force-recreate.",
+    "excerpt": "You're setting up a PostgreSQL database with replication, you decided to use Docker along with Docker Compose to make it easier to manage and test, after a few hours of work you finished the job and the master database...",
+    "tags": [
+      "data processing",
+      "docker",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "helsingor/README.md"
+  },
+  {
+    "slug": "hongkong",
+    "title": "\"Hong-Kong\": can't write data into database.",
+    "description": "(Similar to \"Manhattan\" scenario but harder). Your objective is to be able to insert a row in an existing Postgres database. The issue is not specific to Postgres and you don't need to know details about it (although it may help).<br><br>Postgres information: it's a service that listens to a port (:5432) and writes to disk in a data directory, the location of which is defined in the <i>data_directory</i> parameter of the configuration file <i>/etc/postgresql/14/main/postgresql.conf</i>. In our case Postgres is managed by <i>systemd</i> as a unit with name <i>postgresql</i>.",
+    "excerpt": "(Similar to \"Manhattan\" scenario but harder). Your objective is to be able to insert a row in an existing Postgres database. The issue is not specific to Postgres and you don't need to know details about it (although it...",
+    "tags": [
+      "bash",
+      "data processing",
+      "disk volumes"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "hongkong/README.md"
+  },
+  {
+    "slug": "ivujivik",
+    "title": "\"Ivujivik\": Parlez-vous Fran\u00e7ais?",
+    "description": "Given the CSV file <i>/home/admin/table_tableau11.csv</i>, find the <i>Electoral District Name/Nom de circonscription</i> that has the largest number of <i>Rejected Ballots/Bulletins rejet\u00e9s</i> and also has a population of less than 100,000. <br><br> The initial CSV file may be corrupted or invalid in a way that can be fixed without changing its data. <br><br> Installed in the VM are: Python3, Go, sqlite3, <a href=\"https://miller.readthedocs.io/en/latest/\" target=\"_blank\">miller</a> directly and PostgreSQL, MySQL in Docker images. <br><br> Save the solution in the /home/admin/mysolution , with the name as it is in the file, for example: <kbd>echo \"Trois-Rivi\u00e8res\" > ~/mysolution</kbd>",
+    "excerpt": "Given the CSV file <i>/home/admin/table_tableau11.csv</i>, find the <i>Electoral District Name/Nom de circonscription</i> that has the largest number of <i>Rejected Ballots/Bulletins rejet\u00e9s</i> and also has a...",
+    "tags": [
+      "csv",
+      "data processing",
+      "docker"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "ivujivik/README.md"
+  },
+  {
+    "slug": "jakarta",
+    "title": "\"Jakarta\": it's always DNS.",
+    "description": "Can't <kbd>ping google.com</kbd>. It returns <kbd>ping: google.com: Name or service not known</kbd>. Expected is being able to resolve the hostname. (Note: currently the VMs can't ping outside so there's no automated check for the solution).",
+    "excerpt": "Can't <kbd>ping google.com</kbd>. It returns <kbd>ping: google.com: Name or service not known</kbd>. Expected is being able to resolve the hostname. (Note: currently the VMs can't ping outside so there's no automated...",
+    "tags": [
+      "data processing",
+      "dns",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "jakarta/README.md"
+  },
+  {
+    "slug": "karakorum",
+    "title": "\"Karakorum\": WTFIT \u2013 What The Fun Is This?",
+    "description": "There's a binary at <kbd>/home/admin/wtfit</kbd> that nobody knows how it works or what it does (<i>\"what the fun is this\"</i>). Someone remembers something about <i>wtfit</i> needing to communicate to a service in order to start. Run this <i>wtfit</i> program so it doesn't exit with an error, fixing or working around things that you need but are broken in this server. (Note that you can open more than one web \"terminal\").",
+    "excerpt": "There's a binary at <kbd>/home/admin/wtfit</kbd> that nobody knows how it works or what it does (<i>\"what the fun is this\"</i>). Someone remembers something about <i>wtfit</i> needing to communicate to a service in...",
+    "tags": [
+      "apache",
+      "linux-other",
+      "nginx"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "karakorum/README.md"
+  },
+  {
+    "slug": "kihei",
+    "title": "\"Kihei\": Surely Not Another Disk Space Scenario",
+    "description": "There is a <i>/home/admin/kihei</i> program. Make the changes necessary so it runs succesfully, without deleting the <i>/home/admin/datafile</i> file.",
+    "excerpt": "There is a <i>/home/admin/kihei</i> program. Make the changes necessary so it runs succesfully, without deleting the <i>/home/admin/datafile</i> file.",
+    "tags": [
+      "data processing",
+      "disk volumes",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "kihei/README.md"
+  },
+  {
+    "slug": "lhasa",
+    "title": "\"Lhasa\": Easy Math",
+    "description": "There's a file <i>/home/admin/scores.txt</i> with two columns (imagine the first number is a counter and the second one is a test score for example).<br><br> Find the average (more precisely; the arithmetic mean: sum of numbers divided by how many numbers are there) of the numbers in the second column (find the average score).<br><br> Use exaclty two digits to the right of the decimal point. i. e., <b>use exaclty two \"decimal digits\" without any rounding</b>. Eg: if average = 21.349 , the solution is 21.34. If average = 33.1 , the solution is 33.10.<br><br> Save the solution in the <i>/home/admin/solution</i> file, for example: <kbd>echo \"123.45\" > ~/solution</kbd> <br><br> Tip: There's bc, Python3, Golang and sqlite3 installed in this VM.",
+    "excerpt": "There's a file <i>/home/admin/scores.txt</i> with two columns (imagine the first number is a counter and the second one is a test score for example).<br><br> Find the average (more precisely; the arithmetic mean: sum of...",
+    "tags": [
+      "bash",
+      "csv",
+      "data processing"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "lhasa/README.md"
+  },
+  {
+    "slug": "lisbon",
+    "title": "\"Lisbon\": etcd SSL cert troubles",
+    "description": "There's an <i>etcd</i> server running on https://localhost:2379 , get the value for the key \"foo\", ie <kbd>etcdctl get foo</kbd> or <kbd>curl https://localhost:2379/v2/keys/foo</kbd>",
+    "excerpt": "There's an <i>etcd</i> server running on https://localhost:2379 , get the value for the key \"foo\", ie <kbd>etcdctl get foo</kbd> or <kbd>curl https://localhost:2379/v2/keys/foo</kbd>",
+    "tags": [
+      "etcd",
+      "linux-other",
+      "nginx"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "lisbon/README.md"
+  },
+  {
+    "slug": "manado",
+    "title": "\"Manado\": How much do you press?",
+    "description": "You have been tasked with compressing the file _/home/admin/names_, which is 35147 bytes, to a size smaller than 9400 bytes. You can use any compressing tool at your disposal (there are many available in the server), also you can modify the file without deleting anything in it. Put the solution (compressed file) in the _/home/user/admin/solution_ directory with the default extension used by the compression tool (example: ~/solution/names.gzip). Test: The size of the compressed file is smaller than 9400 bytes. The \"Check My Solution\" button runs the script _/home/admin/agent/check.sh_, which you can see and execute. **check.sh** bash #!/usr/bin/bash # Directory path solution_folder=\"/home/admin/solution\" # List of compression tools to try compression_tools=(\"xz\" \"gzip\" \"lbzip2\" \"lz4\" \"lzip\" \"lzop\" \"zstd\") # Loop through each compression tool for tool in \"${compression_tools[@]}\"; do # Find compressed files for the current tool compressed_files=$(find \"$solution_folder\" -maxdepth 1 -type f -name \"*.${tool}\" 2>/dev/null) # Loop through each compressed file found for compressed_file in $compressed_files; do # Check if the compressed file size is less than 9400 bytes if [ $(stat -c %s \"$compressed_file\") -lt 9400 ]; then # Attempt to decompress the file if \"$tool\" -d \"$compressed_file\" -c > \"$solution_folder/temp_uncompressed.txt\"; then # Check if the size of the uncompressed file is at least 35000 bytes if [ $(stat -c %s \"$solution_folder/temp_uncompressed.txt\") -ge 35000 ]; then # Count the number of words in the uncompressed file word_count=$(wc -w < \"$solution_folder/temp_uncompressed.txt\") # Check if the word count is 4950 if [ \"$word_count\" -eq 4950 ]; then echo -n \"OK\" exit 0 # Exit script with success status fi fi fi fi done done # If none of the compressed files meet all conditions echo -n \"NO\"",
+    "excerpt": "You have been tasked with compressing the file _/home/admin/names_, which is 35147 bytes, to a size smaller than 9400 bytes. You can use any compressing tool at your disposal (there are many available in the server),...",
+    "tags": [
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "manado/README.md"
+  },
+  {
+    "slug": "manhattan",
+    "title": "\"Manhattan\": can't write data into database.",
+    "description": "Your objective is to be able to insert a row in an existing Postgres database. The issue is not specific to Postgres and you don't need to know details about it (although it may help).<br><br>Helpful Postgres information: it's a service that listens to a port (:5432) and writes to disk in a data directory, the location of which is defined in the <i>data_directory</i> parameter of the configuration file <i>/etc/postgresql/14/main/postgresql.conf</i>. In our case Postgres is managed by <i>systemd</i> as a unit with name <i>postgresql</i>.",
+    "excerpt": "Your objective is to be able to insert a row in an existing Postgres database. The issue is not specific to Postgres and you don't need to know details about it (although it may help).<br><br>Helpful Postgres...",
+    "tags": [
+      "bash",
+      "data processing",
+      "disk volumes"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "manhattan/README.md"
+  },
+  {
+    "slug": "marrakech",
+    "title": "\"Marrakech\": Word Histogram",
+    "description": "Find in the file <i>frankestein.txt</i> the <strong>second</strong> most frequent word and save in <strong>UPPER</strong> (capital) case in the <i>/home/admin/mysolution</i> file. <br><br> A word is a string of characters separated by space or newlines or punctuation symbols <kbd>.,:;</kbd> . Disregard case ('The', 'the' and 'THE' is the same word) and for simplification consider the apostrophe as another character not as punctuation (\"it's\" would be a word, distinct from \"it\" and \"is\"). Also disregard plurals (\"car\" and \"cars\" are different words) and other word variations (don't do \"stemming\"). <br><br> We are providing a shorter <i>test.txt</i> file where the second most common word in upper case is \"WORLD\", so we could save this solution as: <kbd>echo \"WORLD\" > /home/admin/mysolution</kbd> <br><br>This problem can be done with a programming language (Python, Golang and sqlite3) or with common Linux utilities.",
+    "excerpt": "Find in the file <i>frankestein.txt</i> the <strong>second</strong> most frequent word and save in <strong>UPPER</strong> (capital) case in the <i>/home/admin/mysolution</i> file. <br><br> A word is a string of...",
+    "tags": [
+      "bash",
+      "golang",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "marrakech/README.md"
+  },
+  {
+    "slug": "melbourne",
+    "title": "\"Melbourne\": WSGI with Gunicorn",
+    "description": "There is a Python <a href=\"https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface\">WSGI</a> web application file at <i>/home/admin/wsgi.py</i> , the purpose of which is to serve the string \"Hello, world!\". This file is served by a <a href=\"https://docs.gunicorn.org/en/stable/\">Gunicorn</a> server which is fronted by an nginx server (both servers managed by systemd). So the flow of an HTTP request is: Web Client (curl) -> Nginx -> Gunicorn -> wsgi.py . The objective is to be able to curl the localhost (on default port :80) and get back \"Hello, world!\", using the current setup.",
+    "excerpt": "There is a Python <a href=\"https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface\">WSGI</a> web application file at <i>/home/admin/wsgi.py</i> , the purpose of which is to serve the string \"Hello, world!\". This file...",
+    "tags": [
+      "bash",
+      "gunicorn",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "melbourne/README.md"
+  },
+  {
+    "slug": "minneapolis",
+    "title": "\"Minneapolis\": Break a CSV file",
+    "description": "Break the Comma Separated Valued (CSV) file _data.csv_ in the _/home/admin/_ directory into exactly 10 smaller files of about the same size named _data-00.csv_, _data-01.csv_, ... , _data-09.csv_ files in the same directory. All the files should have the same header (first line with column names) as _data.csv_. None of the smaller files should be bigger than 32KB. Note: to simplify, disregard broken lines in your files (ie, you can break a file at any point, not just at a newline). The resulting files don't have to be proper CSV files.",
+    "excerpt": "Break the Comma Separated Valued (CSV) file _data.csv_ in the _/home/admin/_ directory into exactly 10 smaller files of about the same size named _data-00.csv_, _data-01.csv_, ... , _data-09.csv_ files in the same...",
+    "tags": [
+      "csv",
+      "data processing",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "minneapolis/README.md"
+  },
+  {
+    "slug": "minneapolis-2",
+    "title": "\"Minneapolis with a Vengeance\": Break a CSV file",
+    "description": "Break the Comma Separated Valued (CSV) file _data.csv_ in the _/home/admin/_ directory into exactly 10 smaller files of about the same size named _data-00.csv_, _data-01.csv_, ... , _data-09.csv_ files in the same directory. All the files should have the same header (first line with column names) as _data.csv_. None of the smaller files should be bigger than 32KB. Note: unlike the original [Minneapolis scenario](https://sadservers.com/scenario/minneapolis), here the resulting files have to be proper CSV files. As a helper tool, you can run the program check_csv.py to check if your data-??.cs files look like proper CSV files.",
+    "excerpt": "Break the Comma Separated Valued (CSV) file _data.csv_ in the _/home/admin/_ directory into exactly 10 smaller files of about the same size named _data-00.csv_, _data-01.csv_, ... , _data-09.csv_ files in the same...",
+    "tags": [
+      "csv",
+      "data processing",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "minneapolis-2/README.md"
+  },
+  {
+    "slug": "monaco",
+    "title": "\"Monaco\": Disappearing Trick",
+    "description": "There is a web server on :5000 with a form. POSTing the correct form password into this web service will return a secret. <br><br> Save this secret provided by the web page (not the password you sent to it) to /home/admin/mysolution, for example: <kbd>echo \"SecretFromWebSite\" > ~/mysolution</kbd> <br><br> TIP: a developer worked on the web server code in this VM, using the same 'admin' account. <br><br> Scenario credit: PuppiestDoggo",
+    "excerpt": "There is a web server on :5000 with a form. POSTing the correct form password into this web service will return a secret. <br><br> Save this secret provided by the web page (not the password you sent to it) to...",
+    "tags": [
+      "disk volumes",
+      "git",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "monaco/README.md"
+  },
+  {
+    "slug": "moyogalpa",
+    "title": "\"Monapaya\": Security Snag. The Trials of John and Mike",
+    "description": "John and Mike are working on a Golang web application, and the security team has asked them to implement security measures. They have been tasked with the following: - The application must communicate only over HTTPS. - The application should only have access to the necessary files. Certificate and static files - The application should be rate-limited to 10 requests per second. - The application should run with a non-root user. John and Mike tried their best; unfortunately, they have broken the application while adding security measures, and it no longer functions. They need your help to fix it. The fixed application should be able to: - Allow clients to communicate with the application over HTTPS without ignoring any checks. - Allow clients to make at most 10 requests per second. - Serve static files.",
+    "excerpt": "John and Mike are working on a Golang web application, and the security team has asked them to implement security measures. They have been tasked with the following: - The application must communicate only over HTTPS. -...",
+    "tags": [
+      "bash",
+      "golang",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "moyogalpa/README.md"
+  },
+  {
+    "slug": "oaxaca",
+    "title": "\"Oaxaca\": Close an Open File",
+    "description": "The file <i>/home/admin/somefile</i> is open for writing by some process. Close this file without killing the process.",
+    "excerpt": "The file <i>/home/admin/somefile</i> is open for writing by some process. Close this file without killing the process.",
+    "tags": [
+      "bash",
+      "linux-other",
+      "pro"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "oaxaca/README.md"
+  },
+  {
+    "slug": "paris",
+    "title": "\"Paris\": Where is my webserver?",
+    "description": "A developer put an important password on his webserver localhost:5000 . However, he can't find a way to recover it. This scenario is easy to to once you realize the one \"trick\". <br><br> Find the password and save it in /home/admin/mysolution , for example: <kbd>echo \"somepassword\" > ~/mysolution</kbd> <br><br> Scenario credit: PuppiestDoggo",
+    "excerpt": "A developer put an important password on his webserver localhost:5000 . However, he can't find a way to recover it. This scenario is easy to to once you realize the one \"trick\". <br><br> Find the password and save it in...",
+    "tags": [
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "paris/README.md"
+  },
+  {
+    "slug": "pokhara",
+    "title": "\"Pokhara\": SSH and other sshenanigans",
+    "description": "A user <kbd>client</kbd> was added to the server, as well as their SSH public key.<br> The objective is to be able to SSH locally (there's only one server) as this user <i>client</i> using their ssh keys. This is, if as root you change to this user <kbd>sudo su; su client</kbd>, you should be able to login with ssh: <kbd>ssh localhost</kbd>.<br><br>",
+    "excerpt": "A user <kbd>client</kbd> was added to the server, as well as their SSH public key.<br> The objective is to be able to SSH locally (there's only one server) as this user <i>client</i> using their ssh keys. This is, if as...",
+    "tags": [
+      "bash",
+      "linux-other",
+      "ssh"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "pokhara/README.md"
+  },
+  {
+    "slug": "poznan",
+    "title": "\"Pozna\u0144\": Helm Chart Issue in Kubernetes",
+    "description": "A DevOps engineer created a Helm Chart web_chart with a custom nginx site, however he still gets the default nginx _index.html_. You can check for example with POD_IP=$(kubectl get pods -n default -o jsonpath='{.items[0].status.podIP}') and curl -s \"${POD_IP}\">. In addition he should set replicas to 3. The chart is not working as expected. Fix the configurations so you get the custom HTML page from any nginx pod. Root access is not needed (\"admin\" user cannot sudo). Credit [Kamil B\u0142a\u017c](https://www.devkblaz.com/)",
+    "excerpt": "A DevOps engineer created a Helm Chart web_chart with a custom nginx site, however he still gets the default nginx _index.html_. You can check for example with POD_IP=$(kubectl get pods -n default -o...",
+    "tags": [
+      "helm",
+      "json",
+      "kubernetes"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "poznan/README.md"
+  },
+  {
+    "slug": "quito",
+    "title": "\"Quito\": Control One Container from Another",
+    "description": "You have a running container named _docker-access_. Another container _nginx_ is present but in a stopped state. Your goal is to start the nginx container from inside the docker-access container. You must not start the nginx container from the host system or any other container that is not _docker-access_. You can restart this _docker-access_ container.",
+    "excerpt": "You have a running container named _docker-access_. Another container _nginx_ is present but in a stopped state. Your goal is to start the nginx container from inside the docker-access container. You must not start the...",
+    "tags": [
+      "bash",
+      "docker",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "quito/README.md"
+  },
+  {
+    "slug": "rosario",
+    "title": "\"Rosario\": Restore a MySQL database.",
+    "description": "A developer created a database named 'main' but now some data is missing in the database. You need to restore the database using the the dump \"/home/admin/backup.sql\".<br> The issue is that the developer forgot the root password for the MariaDB server.<br> If you encounter an issue while restoring the database, fix it. Credit: [Sebastian Segovia](https://www.linkedin.com/in/sebastian-segovia-a7518a228/)",
+    "excerpt": "A developer created a database named 'main' but now some data is missing in the database. You need to restore the database using the the dump \"/home/admin/backup.sql\".<br> The issue is that the developer forgot the root...",
+    "tags": [
+      "data processing",
+      "linux-other",
+      "mysql"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "rosario/README.md"
+  },
+  {
+    "slug": "roseau",
+    "title": "\"Roseau\": Hack a Web Server",
+    "description": "There is a secret stored in a file that the local Apache web server can provide. Find this secret and have it as a /home/admin/secret.txt file.<br><br> Note that in this server the <i>admin</i> user is not a sudoer.<br><br> Also note that the password crackers <i>Hashcat</i> and <i>Hydra</i> are installed from packages and <i>John the Ripper</i> binaries have been built from source in <i>/home/admin/john/run</i>",
+    "excerpt": "There is a secret stored in a file that the local Apache web server can provide. Find this secret and have it as a /home/admin/secret.txt file.<br><br> Note that in this server the <i>admin</i> user is not a...",
+    "tags": [
+      "apache",
+      "hack",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "roseau/README.md"
+  },
+  {
+    "slug": "saintjohn",
+    "title": "\"Saint John\": what is writing to this log file?",
+    "description": "A developer created a testing program that is continuously writing to a log file <i>/var/log/bad.log</i> and filling up disk. You can check for example with <kbd>tail -f /var/log/bad.log</kbd>.<br> This program is no longer needed. Find it and terminate it. Do not delete the log file.",
+    "excerpt": "A developer created a testing program that is continuously writing to a log file <i>/var/log/bad.log</i> and filling up disk. You can check for example with <kbd>tail -f /var/log/bad.log</kbd>.<br> This program is no...",
+    "tags": [
+      "bash",
+      "disk volumes",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "saintjohn/README.md"
+  },
+  {
+    "slug": "salta",
+    "title": "\"Salta\": Docker container won't start.",
+    "description": "There's a \"dockerized\" Node.js web application in the <kbd>/home/admin/app</kbd> directory. Create a Docker container so you get a web app on port <i>:8888</i> and can <i>curl</i> to it. For the solution to be valid, there should be only one running Docker container.",
+    "excerpt": "There's a \"dockerized\" Node.js web application in the <kbd>/home/admin/app</kbd> directory. Create a Docker container so you get a web app on port <i>:8888</i> and can <i>curl</i> to it. For the solution to be valid,...",
+    "tags": [
+      "bash",
+      "docker",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "salta/README.md"
+  },
+  {
+    "slug": "santiago",
+    "title": "\"Santiago\": Find the secret combination",
+    "description": "Alice the spy has hidden a secret number combination, find it using these instructions:<br><br> 1) Find the number of <b>lines</b> with occurrences of the string <b>Alice</b> (case sensitive) in the <i>*.txt</i> files in the <i>/home/admin</i> directory<br> 2) There's a file where <b>Alice</b> appears exactly once. In that file, in the line after that \"Alice\" occurrence there's a number.<br> Write both numbers consecutively as one (no new line or spaces) to the solution file. For example if the first number from 1) is <i>11</i> and the second <i>22</i>, you can do <kbd>echo -n 11 > /home/admin/solution; echo 22 >> /home/admin/solution</kbd> or echo \"1122\" > /home/admin/solution.",
+    "excerpt": "Alice the spy has hidden a secret number combination, find it using these instructions:<br><br> 1) Find the number of <b>lines</b> with occurrences of the string <b>Alice</b> (case sensitive) in the <i>*.txt</i> files...",
+    "tags": [
+      "linux-other",
+      "new"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "santiago/README.md"
+  },
+  {
+    "slug": "saskatoon",
+    "title": "\"Saskatoon\": counting IPs.",
+    "description": "There's a web server access log file at <kbd>/home/admin/access.log</kbd>. The file consists of one line per HTTP request, with the requester's IP address at the beginning of each line. <br><br>Find what's the IP address that has the most requests in this file (there's no tie; the IP is unique). Write the solution into a file <kbd>/home/admin/highestip.txt</kbd>. For example, if your solution is \"1.2.3.4\", you can do <kbd>echo \"1.2.3.4\" > /home/admin/highestip.txt</kbd>",
+    "excerpt": "There's a web server access log file at <kbd>/home/admin/access.log</kbd>. The file consists of one line per HTTP request, with the requester's IP address at the beginning of each line. <br><br>Find what's the IP...",
+    "tags": [
+      "bash",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "saskatoon/README.md"
+  },
+  {
+    "slug": "singara",
+    "title": "\"Singara\": Docker and Kubernetes web app not working",
+    "description": "There's a <i>k3s</i> Kubernetes install you can access with <i>kubectl</i>. The Kubernetes YAML manifests under <kbd>/home/admin</kbd> have been applied. The objective is to access from the host the \"webapp\" web server deployed and find what message it serves (it's a name of a town or city btw). In order to pass the check, the webapp Docker container should not be run separately outside Kubernetes as a shortcut.",
+    "excerpt": "There's a <i>k3s</i> Kubernetes install you can access with <i>kubectl</i>. The Kubernetes YAML manifests under <kbd>/home/admin</kbd> have been applied. The objective is to access from the host the \"webapp\" web server...",
+    "tags": [
+      "docker",
+      "kubernetes",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "singara/README.md"
+  },
+  {
+    "slug": "st-paul",
+    "title": "\"Saint Paul\": Merge Many CSVs files",
+    "description": "Join (merge) all the 338 files in _/home/admin/polldayregistrations_enregistjourduscrutin?????.csv_ into one single _/home/admin/all.csv_ file with the contents of all the CSV files in any order. There should be only one line with the names of the columns as a header.",
+    "excerpt": "Join (merge) all the 338 files in _/home/admin/polldayregistrations_enregistjourduscrutin?????.csv_ into one single _/home/admin/all.csv_ file with the contents of all the CSV files in any order. There should be only...",
+    "tags": [
+      "csv",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "st-paul/README.md"
+  },
+  {
+    "slug": "taipei",
+    "title": "\"Taipei\": Come a-knocking",
+    "description": "There is a web server on port :80 protected with <a href=\"https://en.wikipedia.org/wiki/Port_knocking\" target=\"_new\">Port Knocking</a>. Find the one \"knock\" needed (sending a SYN to a single port, not a sequence) so you can <kbd>curl localhost</kbd>.",
+    "excerpt": "There is a web server on port :80 protected with <a href=\"https://en.wikipedia.org/wiki/Port_knocking\" target=\"_new\">Port Knocking</a>. Find the one \"knock\" needed (sending a SYN to a single port, not a sequence) so you...",
+    "tags": [
+      "bash",
+      "linux-other",
+      "new"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "taipei/README.md"
+  },
+  {
+    "slug": "tarifa",
+    "title": "\"Tarifa\": Between Two Seas",
+    "description": "There are three Docker containers defined in the <i>docker-compose.yml</i> file: an HAProxy accepting connetions on port :5000 of the host, and two nginx containers, not exposed to the host.<br><br> The person who tried to set this up wanted to have HAProxy in front of the (backend or upstream) nginx containers load-balancing them but something is not working.",
+    "excerpt": "There are three Docker containers defined in the <i>docker-compose.yml</i> file: an HAProxy accepting connetions on port :5000 of the host, and two nginx containers, not exposed to the host.<br><br> The person who tried...",
+    "tags": [
+      "docker",
+      "haproxy",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "tarifa/README.md"
+  },
+  {
+    "slug": "tokamachi",
+    "title": "\"Tokamachi\": Troubleshooting a Named Pipe",
+    "description": "There's a process reading from the named pipe _/home/admin/namedpipe_. If you run this command that writes to that pipe: /bin/bash -c 'while true; do echo \"this is a test message being sent to the pipe\" > /home/admin/namedpipe; done' & And check the reader log with tail -f reader.log You'll see that after a minute or so it works for a while (the reader receives some messages) and then it stops working (no more received messages are printed to the reader log or it takes a long time to process one). Troubleshoot and fix (for example changing the writer command) so that the writer keeps sending the messages and the reader is able to read all of them.",
+    "excerpt": "There's a process reading from the named pipe _/home/admin/namedpipe_. If you run this command that writes to that pipe: /bin/bash -c 'while true; do echo \"this is a test message being sent to the pipe\" >...",
+    "tags": [
+      "bash",
+      "linux-other",
+      "pro"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "tokamachi/README.md"
+  },
+  {
+    "slug": "tokyo",
+    "title": "\"Tokyo\": can't serve web file",
+    "description": "There's a web server serving a file <i>/var/www/html/index.html</i> with content \"hello sadserver\" but when we try to check it locally with an HTTP client like <kbd>curl 127.0.0.1:80</kbd>, nothing is returned. This scenario is not about the particular web server configuration and you only need to have general knowledge about how web servers work.",
+    "excerpt": "There's a web server serving a file <i>/var/www/html/index.html</i> with content \"hello sadserver\" but when we try to check it locally with an HTTP client like <kbd>curl 127.0.0.1:80</kbd>, nothing is returned. This...",
+    "tags": [
+      "apache",
+      "data processing",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "tokyo/README.md"
+  },
+  {
+    "slug": "tukaani",
+    "title": "\"Tukaani\": XZ LZMA Library Compromised",
+    "description": "This is a scenario where a Linux shared library liblzma.so has been compromised (the real compromised XZ Utils liblzma has not been used). Find all instances of this malicious liblzma library and make it so none of the running processes use it and all the applications (\"webapp\", \"jobapp\") still run properly (eg, stopping those applications is not a solution). This liblzma.so at the path /usr/lib/x86_64-linux-gnu/liblzma.so.5.2.5 is the good one. Consider the same library liblzma.so.5.2.5 at other paths as compromised (ideally we would have used other real versions with different checksums but we were not able to). The \"webapp\" responds to curl http://127.0.0.1:8000 and the docker version of it \"user-service\" responds to curl http://127.0.0.1:8001 with \"Hello, We are using lzma library to compress our requests.\" Find all the \"compromised\" libraries paths that are used by the hijacked processes. Save their paths in the /home/admin/paths file (one path per line), for example: echo '/path/to/liblzma.so.5' >> /home/admin/paths, one per path.",
+    "excerpt": "This is a scenario where a Linux shared library liblzma.so has been compromised (the real compromised XZ Utils liblzma has not been used). Find all instances of this malicious liblzma library and make it so none of the...",
+    "tags": [
+      "bash",
+      "docker",
+      "linux-other"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "tukaani/README.md"
+  },
+  {
+    "slug": "unimak",
+    "title": "\"Unimak Island\": Fun with Mr Jason",
+    "description": "Using the file <i>station_information.json</i> , find the station_id where \"has_kiosk\" is false and \"capacity\" is greater than 30. <br><br> Save the station_id of the solution in the /home/admin/mysolution file, for example: <kbd>echo \"ec040a94-4de7-4fb3-aea0-ec5892034a69\" > ~/mysolution</kbd> <br><br> You can use the installed utilities <a href=\"https://jqlang.github.io/jq/\" target=\"_new\">jq</a>, <a href=\"https://github.com/tomnomnom/gron\" target=\"_new\">gron</a>, <a href=\"https://github.com/simeji/jid\" target=\"_new\">jid</a> as well as <a href=\"https://docs.python.org/3/library/json.html\" target=\"_new\">Python3</a> and <a href=\"https://gobyexample.com/json\" target=\"_new\">Golang</a>.",
+    "excerpt": "Using the file <i>station_information.json</i> , find the station_id where \"has_kiosk\" is false and \"capacity\" is greater than 30. <br><br> Save the station_id of the solution in the /home/admin/mysolution file, for...",
+    "tags": [
+      "data processing",
+      "git",
+      "json"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "unimak/README.md"
+  },
+  {
+    "slug": "venice",
+    "title": "\"Venice\": Am I in a container?",
+    "description": "Try and figure out if you are inside a container (like a Docker one for example) or inside a Virtual Machine (like in the other scenarios).",
+    "excerpt": "Try and figure out if you are inside a container (like a Docker one for example) or inside a Virtual Machine (like in the other scenarios).",
+    "tags": [
+      "docker",
+      "podman",
+      "pro"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "venice/README.md"
+  },
+  {
+    "slug": "warsaw",
+    "title": "\"Warsaw\": Promethues can't scrape the webserver",
+    "description": "A developer created a golang application that is exposing the _/metrics_ endpoint. They have a problem with scraping the metrics from the application. They asked you to help find the problem. Full source code of the application is available at the _/home/admin/app_ directory. Credit [Kamil B\u0142a\u017c](https://www.devkblaz.com/)",
+    "excerpt": "A developer created a golang application that is exposing the _/metrics_ endpoint. They have a problem with scraping the metrics from the application. They asked you to help find the problem. Full source code of the...",
+    "tags": [
+      "golang",
+      "linux-other",
+      "pro"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "warsaw/README.md"
+  },
+  {
+    "slug": "yokohama",
+    "title": "\"Yokohama\": Linux Users Working Together",
+    "description": "There are four Linux users working together in a project in this server: abe, betty, carlos, debora. First, they have asked you as the sysadmin, to make it so each of these four users can read the project files of the other users in the <i>/home/admin/shared</i> directory, but none of them can modify a file that belongs to another user. Users should be able modify their own files. Secondly, they have asked you to modify the file shared/ALL so that any of these four users can write more content to it, but previous (existing) content cannot be altered.",
+    "excerpt": "There are four Linux users working together in a project in this server: abe, betty, carlos, debora. First, they have asked you as the sysadmin, to make it so each of these four users can read the project files of the...",
+    "tags": [
+      "bash",
+      "linux-other",
+      "pro"
+    ],
+    "level": "",
+    "type": "",
+    "access": "",
+    "time": "",
+    "readme": "yokohama/README.md"
+  }
+]
